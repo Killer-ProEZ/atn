@@ -79,7 +79,7 @@
           include_once('connection.php');
           $No = 1;
           $result = pg_query($conn, "Select * from public.product");
-          while ($row = pg_fetch_row($result, PGSQL_ASSOC)) {
+          while ($row = pg_fetch_array($result, PGSQL_ASSOC)) {
           ?>
            <div class="col-lg-3 col-md-6 portfolio-item">
              <div class="portfolio-wrap">

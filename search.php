@@ -57,33 +57,32 @@
          <div class="section-title" data-aos="fade-left">
            <h2>Products</h2>
          </div>
-         <?php 
-          if(isset($_POST["search"])){
-            $search=$_POST["txt_search"];
-            if(trim($search)==""){
+         <?php
+          if (isset($_POST["search"])) {
+            $search = $_POST["txt_search"];
+            if (trim($search) == "") {
               echo "<script type='text/javascript'>alert('Search can not be empty');</script>";
-            }
-            else{
-              echo '<meta http-equiv="refresh" content="0;URL=?page=search&&txt='.$search.'">';
+            } else {
+              echo '<meta http-equiv="refresh" content="0;URL=?page=search&&txt=' . $search . '">';
             }
           }
-         ?>
+          ?>
          <form action="" method="POST">
-         <div class="input-group mb-3" style="width: 300px;">
-           <input name="txt_search" type="text" class="form-control" placeholder="Search Name" aria-label="Search" aria-describedby="button-addon2">
-           <button name="search" class="btn btn-primary" type="submit" id="button-addon2">Search</button>
-         </div>
+           <div class="input-group mb-3" style="width: 300px;">
+             <input name="txt_search" type="text" class="form-control" placeholder="Search Name" aria-label="Search" aria-describedby="button-addon2">
+             <button name="search" class="btn btn-primary" type="submit" id="button-addon2">Search</button>
+           </div>
          </form>
        </div>
        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
          <?php
           include_once('connection.php');
-          if(isset($_GET['txt'])){
-              $txt=$_GET['txt'];
+          if (isset($_GET['txt'])) {
+            $txt = $_GET['txt'];
           }
           $No = 1;
-          $result = mysqli_query($conn, "Select * from product where ProductName like'%$txt%'");
-          while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+          $result = pg_query($conn, "Select * from public.product where ProductName like'%$txt%'");
+          while ($row = pg_fetch_array($result, PGSQL_ASSOC)) {
           ?>
            <div class="col-lg-3 col-md-6 portfolio-item">
              <div class="portfolio-wrap">

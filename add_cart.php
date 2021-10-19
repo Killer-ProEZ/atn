@@ -1,10 +1,10 @@
 <?php session_start();
 $id=isset($_GET['id']) ?$_GET['id']:'';
 include_once("connection.php");
-$query="select * from product where ProductID='$id'";
-$res=mysqli_query($conn,$query);
+$query="select * from public.product where ProductID='$id'";
+$res=pg_query($conn,$query);
 if($res){
-    $product=mysqli_fetch_assoc($res);
+    $product=pg_fetch_assoc($res);
 }
 $item=[
     'id'=>$product['ProductID'],
@@ -32,5 +32,3 @@ else{
     echo "<script> location.href='index.php'; </script>";
     exit;
 }
-
-?>

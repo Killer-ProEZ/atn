@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,16 +31,16 @@
             }
         }
     </style>
-    
+
     <?php
     include_once("connection.php");
     function bind_Category_List($conn)
     {
         $sqlstring = "select * from brand";
-        $result = mysqli_query($conn, $sqlstring);
+        $result = pg_query($conn, $sqlstring);
         echo "<select name='BrandList' class='form-control'>
 		<option value='0'>Choose category</option>";
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        while ($row = pg_fetch_array($result, PGSQL_ASSOC)) {
             echo "<option value='" . $row['BrandID'] . "'>" . $row['BrandName'] . "</option>";
         }
         echo "</select>";
@@ -57,32 +58,27 @@
 
         if (trim($proid) == "") {
             echo "<script type='text/javascript'>alert('ProductID can not be empty');</script>";
-        }
-        else if (trim($proname) == "") {
+        } else if (trim($proname) == "") {
             echo "<script type='text/javascript'>alert('ProductName can not be empty');</script>";
-        }
-        else if (trim($brand) == "") {
+        } else if (trim($brand) == "") {
             echo "<script type='text/javascript'>alert('Brand can not be empty');</script>";
-        }
-        else if (trim($description) == "") {
+        } else if (trim($description) == "") {
             echo "<script type='text/javascript'>alert('Description can not be empty');</script>";
-        }
-        else if (!is_numeric($price)) {
+        } else if (!is_numeric($price)) {
             echo "<script type='text/javascript'>alert('Price must be a number');</script>";
-        }
-        else if (!is_numeric($stock)) {
+        } else if (!is_numeric($stock)) {
             echo "<script type='text/javascript'>alert('Stock must be a number');</script>";
         } else {
             if ($pic['type'] == "image/jpg" || $pic['type'] == "image/jpeg" || $pic['type'] == "image/png" || $pic['type'] == "image/gif") {
                 if ($pic['size'] < 614400) {
                     $sq = "select * from product where ProductID='$proid' or ProductName='$proname'";
-                    $result = mysqli_query($conn, $sq);
-                    if (mysqli_num_rows($result) == 0) {
+                    $result = pg_query($conn, $sq);
+                    if (pg_num_rows($result) == 0) {
                         copy($pic['tmp_name'], "product-imgs/" . $pic['name']);
                         $filePic = $pic['name'];
                         $sqlstring = "Insert into product(
                             `ProductID`, `ProductName`, `Price`, `Img`, `Stock`, `Description`, `BrandID`) values ('$proid','$proname',$price,'$filePic',$stock,'$description','$brand')";
-                        mysqli_query($conn, $sqlstring) or die(mysqli_error($conn));
+                        pg_query($conn, $sqlstring) or die(pg_result_error($conn));
                         echo "<script type='text/javascript'>alert('Add product Successful');</script>";
                         echo '<meta http-equiv="refresh" content="0;URL=admin.php?page=product"/>';
                     } else {
@@ -103,75 +99,75 @@
 </head>
 
 <body>
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Admin</h1>
-                    <div class="btn-toolbar mb-2 mb-md-0">
-                    </div>
-                </div>
-
-                <h2>Add Product</h2>
-                <div class="btn-cancel">
-                    <a class="btn btn-danger" href="admin.php?page=product" role="button"><i class="fas fa-times"></i><Span> Cancel</Span></a>
-                </div>
-                <form name="add_product" method="post" enctype="multipart/form-data" role="form">
-                    <div class="row mb-4">
-                        <div class="col">
-                            <div class="form-outline">
-                                <label class="form-label" for="proid">PoductID</label>
-                                <input name="proid" type="text" id="proid" class="form-control" placeholder="ProductID" />
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-outline">
-                                <label class="form-label" for="img">Image</label>
-                                <input type="file" name="img" id="img" class="form-control" value="" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row mb-4">
-                        <div class="col">
-                            <div class="form-outline">
-                                <label class="form-label" for="proname">PoductName</label>
-                                <input name="proname" type="text" id="proname" class="form-control" placeholder="ProductName"/>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-outline">
-                                <label class="form-label" for="brand">Brand</label>
-                                <div> <?php bind_Category_List($conn); ?></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb-4">
-                        <div class="col">
-                            <div class="form-outline">
-                                <label class="form-label" for="price">Price</label>
-                                <input name="price" type="number" id="price" class="form-control" placeholder="Price" />
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-outline">
-                                <label class="form-label" for="stock">Stock</label>
-                                <input name="stock" type="number" id="stock" class="form-control" placeholder="Stock" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Text input -->
-                    <div class="form-outline mb-4">
-                        <label class="form-label" for="description">Description</label>
-                        <textarea name="description" id="description" class="form-control" cols="30" rows="7" placeholder="Description"></textarea>
-                    </div>
-                    <!-- Submit button -->
-                    <div class="btn-func">
-                        <button name="btn_add" type="submit" class="btn btn-primary">ADD</button>
-                        <button type="submit" class="btn btn-primary">RESET</button>
-                    </div>
-                </form>
-            </main>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Admin</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+            </div>
         </div>
+
+        <h2>Add Product</h2>
+        <div class="btn-cancel">
+            <a class="btn btn-danger" href="admin.php?page=product" role="button"><i class="fas fa-times"></i><Span> Cancel</Span></a>
+        </div>
+        <form name="add_product" method="post" enctype="multipart/form-data" role="form">
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="form-outline">
+                        <label class="form-label" for="proid">PoductID</label>
+                        <input name="proid" type="text" id="proid" class="form-control" placeholder="ProductID" />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-outline">
+                        <label class="form-label" for="img">Image</label>
+                        <input type="file" name="img" id="img" class="form-control" value="" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="form-outline">
+                        <label class="form-label" for="proname">PoductName</label>
+                        <input name="proname" type="text" id="proname" class="form-control" placeholder="ProductName" />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-outline">
+                        <label class="form-label" for="brand">Brand</label>
+                        <div> <?php bind_Category_List($conn); ?></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="form-outline">
+                        <label class="form-label" for="price">Price</label>
+                        <input name="price" type="number" id="price" class="form-control" placeholder="Price" />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-outline">
+                        <label class="form-label" for="stock">Stock</label>
+                        <input name="stock" type="number" id="stock" class="form-control" placeholder="Stock" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text input -->
+            <div class="form-outline mb-4">
+                <label class="form-label" for="description">Description</label>
+                <textarea name="description" id="description" class="form-control" cols="30" rows="7" placeholder="Description"></textarea>
+            </div>
+            <!-- Submit button -->
+            <div class="btn-func">
+                <button name="btn_add" type="submit" class="btn btn-primary">ADD</button>
+                <button type="submit" class="btn btn-primary">RESET</button>
+            </div>
+        </form>
+    </main>
+    </div>
     </div>
 
 
