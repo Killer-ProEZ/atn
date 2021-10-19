@@ -86,10 +86,10 @@
           while ($row = pg_fetch_array($result, PGSQL_ASSOC)) {
           ?>
             <tr>
-              <td><?php echo $row["ProductID"];  ?></td>
-              <td><img src='product-imgs/<?php echo $row["Img"]; ?>' width="60px"></td>
-              <td><?php echo $row["ProductName"];  ?></td>
-              <td><?php echo $row["Price"];  ?></td>
+              <td><?php echo $row["productid"];  ?></td>
+              <td><img src='product-imgs/<?php echo $row["img"]; ?>' width="60px"></td>
+              <td><?php echo $row["productname"];  ?></td>
+              <td><?php echo $row["price"];  ?></td>
               <td><a href="?page=update_product&&id=<?php echo $row["ProductID"]; ?>"><i class="fas fa-pencil-alt"></i></a></td>
               <td><a href="admin_product.php?function=del&&id=<?php echo $row["ProductID"]; ?>" onclick="return deleteConfirm()"><i class="fas fa-trash-alt"></i></a></i></td>
             </tr>
