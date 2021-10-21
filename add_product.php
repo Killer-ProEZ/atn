@@ -36,7 +36,7 @@
     include_once("connection.php");
     function bind_Category_List($conn)
     {
-        $sqlstring = "select * from brand";
+        $sqlstring = "select * from public.brand";
         $result = pg_query($conn, $sqlstring);
         echo "<select name='BrandList' class='form-control'>
 		<option value='0'>Choose category</option>";
@@ -71,7 +71,7 @@
         } else {
             if ($pic['type'] == "image/jpg" || $pic['type'] == "image/jpeg" || $pic['type'] == "image/png" || $pic['type'] == "image/gif") {
                 if ($pic['size'] < 614400) {
-                    $sq = "select * from product where ProductID='$proid' or ProductName='$proname'";
+                    $sq = "select * from public.product where ProductID='$proid' or ProductName='$proname'";
                     $result = pg_query($conn, $sq);
                     if (pg_num_rows($result) == 0) {
                         copy($pic['tmp_name'], "product-imgs/" . $pic['name']);

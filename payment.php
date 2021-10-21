@@ -35,17 +35,17 @@
         include_once("connection.php");
         $username=$_SESSION['us'];
         $sq="select CustomerID from customer where UserName='$username'";
-        $res=mysqli_query($conn,$sq) or die(mysqli_error($conn));
-        $row=mysqli_fetch_array($res,MYSQLI_ASSOC);
+        $res=pg_query($conn,$sq) or die(pg_result_error($conn));
+        $row=pg_fetch_array($res,MYSQLI_ASSOC);
         $cusid=$row["CustomerID"];
         $query="INSERT INTO `order`(`CustomerID`) VALUES ('$cusid')";
-        $res=mysqli_query($conn,$query)or die(mysqli_error($conn));
+        $res=pg_query($conn,$query)or die(pg_result_error($conn));
         $orderid=mysqli_insert_id($conn);
         foreach($_SESSION["cart"] as $key =>$row){
            $query1="INSERT INTO `orderdetail`(`OrderID`,`ProductID`,`Quality`) VALUES (".$orderid.",'".$key."',".$row['quanlity'].")";
-           $res1=mysqli_query($conn,$query1)or die(mysqli_error($conn));
+           $res1=pg_query($conn,$query1)or die(pg_result_error($conn));
            $query1="UPDATE `product` SET `Stock`=`Stock`-".$row['quanlity']." WHERE ProductID='".$key."'";
-           $res1=mysqli_query($conn,$query1)or die(mysqli_error($conn));
+           $res1=pg_query($conn,$query1)or die(pg_result_error($conn));
         }
         unset($_SESSION["cart"]);
         echo "<script type='text/javascript'>alert('Payment success');</script>";
