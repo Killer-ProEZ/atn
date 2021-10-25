@@ -115,7 +115,7 @@
           echo "<script type='text/javascript'>alert('address can not be empty');</script>";
         } else {
           include_once("connection.php");
-          $sq = "select * from public.customer where CustomerID!='$cusid' and Email='$email'";
+          $sq = "select * from public.customer where customerid!='$cusid' and email='$email'";
           $res = pg_query($conn, $sq);
           $pass1 = md5($pass1);
           if (pg_num_rows($res) == 0) {

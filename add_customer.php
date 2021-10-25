@@ -61,7 +61,7 @@
     } else {
       $pass = md5($pass1);
       include_once("connection.php");
-      $sq = "select * from public.customer where Username='$us' or Email='$email'";
+      $sq = "select * from public.customer where username='$us' or email='$email'";
       $res = pg_query($conn, $sq);
       if (pg_num_rows($res) == 0) {
         pg_query($conn, "Insert into customer (Username, Password,CustomerName,Tel,Email,Address,State) 

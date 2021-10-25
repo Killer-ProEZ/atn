@@ -40,7 +40,7 @@
     } else if (trim($brandname) == "") {
       echo "<script type='text/javascript'>alert('BrandName can not be empty');</script>";
     } else {
-      $sq = "select * from brand where BrandName='$brandname' or BrandID='$brandid'";
+      $sq = "select * from brand where brandname='$brandname' or brandid='$brandid'";
       $res = pg_query($conn, $sq);
       if (pg_num_rows($res) == 0) {
         pg_query($conn, "INSERT INTO `brand`(`BrandID`, `BrandName`) VALUES ('$brandid','$brandname')")

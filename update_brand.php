@@ -35,9 +35,9 @@
   if (isset($_GET["id"])) {
     $id = $_GET["id"];
     $result = pg_query($conn, "select*from public.brand where BrandID='$id'") or die(pg_result_error($conn));
-    $row = pg_fetch_array($result, PGSQL_ASSOC);
-    $brandid = $row['BrandID'];
-    $brandname = $row['BrandName'];
+    $row = pg_fetch_array($result, NUll, PGSQL_ASSOC);
+    $brandid = $row['brandid'];
+    $brandname = $row['brandname'];
   ?>
     <?php
     if (isset($_POST["btn_update"])) {
@@ -49,7 +49,7 @@
         echo "<script type='text/javascript'>alert('BrandName can not be empty');</script>";
       } else {
         include_once("connection.php");
-        $sq = "select * from public.brand where BrandName='$brandname' and BrandID!='$brandid'";
+        $sq = "select * from public.brand where brandname='$brandname' and brandid!='$brandid'";
         $res = pg_query($conn, $sq);
         if (pg_num_rows($res) == 0) {
           pg_query($conn, "UPDATE `brand` SET `BrandName`='$brandname' WHERE BrandID='$brandid'")

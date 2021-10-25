@@ -9,7 +9,7 @@ if (isset($_GET['btn_login'])) {
 	$us = htmlspecialchars(pg_escape_string($conn, $us));
 	$pa = $_GET['pass'];
 	$pass = md5($pa);
-	$res = pg_query($conn, "select * from public.customer where UserName='$us' and Password='$pass' and State=1")
+	$res = pg_query($conn, "select * from public.customer where userName='$us' and password='$pass' and State=1")
 		or die(pg_result_error($conn));
 	if (pg_num_rows($res) == 1) {
 		echo "<script type='text/javascript'>alert('Login Successful');</script>";

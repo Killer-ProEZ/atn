@@ -79,14 +79,14 @@
           <?php
           $No = 1;
           $result = pg_query($conn, "Select * from public.brand");
-          while ($row = pg_fetch_array($result, PGSQL_ASSOC)) {
+          while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
           ?>
             <tr>
               <td><?php echo $No; ?></td>
-              <td><?php echo $row["BrandID"]; ?></td>
-              <td><?php echo $row["BrandName"]; ?></td>
-              <td><a href="?page=update_brand&&id=<?php echo $row["BrandID"]; ?>"><i class="fas fa-pencil-alt"></i></a></td>
-              <td><a href="admin_brand.php?function=del&&id=<?php echo $row["BrandID"]; ?>" onclick="deleteConfirm()"><i class="fas fa-trash-alt"></i></a></i></td>
+              <td><?php echo $row["brandid"]; ?></td>
+              <td><?php echo $row["brandname"]; ?></td>
+              <td><a href="?page=update_brand&&id=<?php echo $row["brandid"]; ?>"><i class="fas fa-pencil-alt"></i></a></td>
+              <td><a href="admin_brand.php?function=del&&id=<?php echo $row["brandid"]; ?>" onclick="deleteConfirm()"><i class="fas fa-trash-alt"></i></a></i></td>
             </tr>
           <?php $No++;
           } ?>

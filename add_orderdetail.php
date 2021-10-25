@@ -45,7 +45,7 @@
     } else if (!is_numeric($quality)) {
       echo "<script type='text/javascript'>alert('Quantity must be a number');</script>";
     } else {
-      $sq = "select * from public.orderdetail where OrderID=$orderid and ProductID='$proid'";
+      $sq = "select * from public.orderdetail where orderid=$orderid and productid='$proid'";
       $res = pg_query($conn, $sq) or die(pg_result_error($conn));
       if (pg_num_rows($res) == 0) {
         pg_query($conn, "INSERT INTO `orderdetail`(`OrderID`, `ProductID`, `Quality`) VALUES ('$orderid','$proid','$quality')")

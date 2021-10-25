@@ -81,20 +81,20 @@
             $txt = $_GET['txt'];
           }
           $No = 1;
-          $result = pg_query($conn, "Select * from public.product where ProductName like'%$txt%'");
-          while ($row = pg_fetch_array($result, PGSQL_ASSOC)) {
+          $result = pg_query($conn, "Select * from public.product where productname like'%$txt%'");
+          while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
           ?>
            <div class="col-lg-3 col-md-6 portfolio-item">
              <div class="portfolio-wrap">
                <img src='product-imgs/<?php echo $row["Img"]; ?>' class="img-fluid" alt="">
                <div class="portfolio-info">
-                 <h4><?php echo $row["ProductName"]; ?></h4>
-                 <p><?php echo $row["Price"] . "$"; ?></p>
+                 <h4><?php echo $row["productname"]; ?></h4>
+                 <p><?php echo $row["price"] . "$"; ?></p>
                  <div class="portfolio-links">
-                   <?php $addid = $row["ProductID"] ?>
+                   <?php $addid = $row["productid"] ?>
                    <form action="get">
-                     <a href="add_cart.php?id=<?php echo $row["ProductID"]; ?>" data-gallery="portfolioGallery" class="portfolio-lightbox" title="ADD"><i class="fas fa-plus"></i></a>
-                     <a href="?page=prodetail&&id=<?php echo $row["ProductID"]; ?>" title="More Details"><i class="fas fa-link"></i></a>
+                     <a href="add_cart.php?id=<?php echo $row["productid"]; ?>" data-gallery="portfolioGallery" class="portfolio-lightbox" title="ADD"><i class="fas fa-plus"></i></a>
+                     <a href="?page=prodetail&&id=<?php echo $row["productid"]; ?>" title="More Details"><i class="fas fa-link"></i></a>
                    </form>
                  </div>
                </div>

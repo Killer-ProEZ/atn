@@ -82,16 +82,16 @@
         <tbody>
           <?php
           $No = 1;
-          $result = pg_query($conn, "Select ProductID, Img, ProductName, Price from public.product");
-          while ($row = pg_fetch_array($result, PGSQL_ASSOC)) {
+          $result = pg_query($conn, "Select productid, img, productname, price from public.product");
+          while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
           ?>
             <tr>
               <td><?php echo $row["productid"];  ?></td>
               <td><img src='product-imgs/<?php echo $row["img"]; ?>' width="60px"></td>
               <td><?php echo $row["productname"];  ?></td>
               <td><?php echo $row["price"];  ?></td>
-              <td><a href="?page=update_product&&id=<?php echo $row["ProductID"]; ?>"><i class="fas fa-pencil-alt"></i></a></td>
-              <td><a href="admin_product.php?function=del&&id=<?php echo $row["ProductID"]; ?>" onclick="return deleteConfirm()"><i class="fas fa-trash-alt"></i></a></i></td>
+              <td><a href="?page=update_product&&id=<?php echo $row["productid"]; ?>"><i class="fas fa-pencil-alt"></i></a></td>
+              <td><a href="admin_product.php?function=del&&id=<?php echo $row["productid"]; ?>" onclick="return deleteConfirm()"><i class="fas fa-trash-alt"></i></a></i></td>
             </tr>
           <?php
             $No++;

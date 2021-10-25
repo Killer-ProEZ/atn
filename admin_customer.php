@@ -81,16 +81,16 @@
           <?php
           $No = 1;
           $result = pg_query($conn, "Select * from public.customer");
-          while ($row = pg_fetch_array($result, PGSQL_ASSOC)) {
+          while ($row = pg_fetch_array($result,NULL, PGSQL_ASSOC)) {
           ?>
             <tr>
-              <td><?php echo $row["CustomerID"]; ?></td>
-              <td><?php echo $row["CustomerName"]; ?></td>
-              <td><?php echo $row["Tel"]; ?></td>
-              <td><?php echo $row["Email"]; ?></td>
-              <td><?php echo $row["Address"]; ?></td>
-              <td><a href="?page=update_customer&&id=<?php echo $row["CustomerID"]; ?>"><i class="fas fa-pencil-alt"></i></a></td>
-              <td><a href="admin_customer.php?function=del&&id=<?php echo $row["CustomerID"]; ?>" onclick="deleteConfirm()"><i class="fas fa-trash-alt"></i></a></i></td>
+              <td><?php echo $row["customerid"]; ?></td>
+              <td><?php echo $row["customername"]; ?></td>
+              <td><?php echo $row["tel"]; ?></td>
+              <td><?php echo $row["email"]; ?></td>
+              <td><?php echo $row["address"]; ?></td>
+              <td><a href="?page=update_customer&&id=<?php echo $row["customerid"]; ?>"><i class="fas fa-pencil-alt"></i></a></td>
+              <td><a href="admin_customer.php?function=del&&id=<?php echo $row["customerid"]; ?>" onclick="deleteConfirm()"><i class="fas fa-trash-alt"></i></a></i></td>
             </tr>
           <?php $No++;
           } ?>

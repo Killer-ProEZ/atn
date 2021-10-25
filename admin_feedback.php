@@ -79,14 +79,14 @@
           <?php
           $No = 1;
           $result = pg_query($conn, "Select * from public.feedback");
-          while ($row = pg_fetch_array($result, PGSQL_ASSOC)) {
+          while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
           ?>
             <tr>
-              <td><?php echo $row["FeedbackID"]; ?></td>
-              <td><?php echo $row["CustomerID"]; ?></td>
-              <td><?php echo $row["Subject"]; ?></td>
-              <td><?php echo $row["Content"]; ?></td>
-              <td><a href="admin_feedback.php?function=del&&id=<?php echo $row["FeedbackID"]; ?>" onclick="deleteConfirm()"><i class="fas fa-trash-alt"></i></a></i></td>
+              <td><?php echo $row["feedbackid"]; ?></td>
+              <td><?php echo $row["customerid"]; ?></td>
+              <td><?php echo $row["subject"]; ?></td>
+              <td><?php echo $row["content"]; ?></td>
+              <td><a href="admin_feedback.php?function=del&&id=<?php echo $row["feedbackid"]; ?>" onclick="deleteConfirm()"><i class="fas fa-trash-alt"></i></a></i></td>
             </tr>
           <?php $No++;
           } ?>

@@ -34,11 +34,11 @@
   include_once('connection.php');
   if (isset($_GET["id"])) {
     $id = $_GET["id"];
-    $result = pg_query($conn, "select*from public.order where OrderID='$id'") or die(pg_result_error($conn));
-    $row = pg_fetch_array($result, PGSQL_ASSOC);
-    $orderid = $row['OrderID'];
-    $cusid = $row['CustomerID'];
-    $orderdate = $row['OrderDate'];
+    $result = pg_query($conn, "select*from public.order where orderid='$id'") or die(pg_result_error($conn));
+    $row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+    $orderid = $row['orderid'];
+    $cusid = $row['customerid'];
+    $orderdate = $row['orderdate'];
 
   ?>
     <?php
@@ -51,7 +51,7 @@
       } else if (trim($cusid) == "") {
         echo "<script type='text/javascript'>alert('CustomerID can not be empty');</script>";
       } else {
-        $sq = "select * from `order` where OrderID=$orderid";
+        $sq = "select * from public.order where orderid=$orderid";
         $res = pg_query($conn, $sq) or die(pg_result_error($conn));
         if (pg_num_rows($res) == 1) {
           pg_query($conn, "UPDATE `order` SET `CustomerID`='$cusid' WHERE OrderID=$orderid")

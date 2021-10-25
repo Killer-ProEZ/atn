@@ -35,11 +35,11 @@
   if (isset($_GET["orderid"])) {
     $orderid = $_GET["orderid"];
     $productid = $_GET["productid"];
-    $result = pg_query($conn, "select*from public.orderdetail where OrderID='$orderid' and ProductID='$productid'") or die(pg_result_error($conn));
-    $row = pg_fetch_array($result, PGSQL_ASSOC);
-    $orderid = $row['OrderID'];
-    $productid = $row['ProductID'];
-    $quality = $row['Quality'];
+    $result = pg_query($conn, "select*from public.orderdetail where orderid='$orderid' and productid='$productid'") or die(pg_result_error($conn));
+    $row = pg_fetch_array($result, NULl, PGSQL_ASSOC);
+    $orderid = $row['orderid'];
+    $productid = $row['productid'];
+    $quality = $row['quality'];
 
   ?>
     <?php
@@ -56,7 +56,7 @@
       } else if (!is_numeric($quality)) {
         echo "<script type='text/javascript'>alert('Quality must be a number');</script>";
       } else {
-        $sq = "select * from public.order where OrderID=$orderid";
+        $sq = "select * from public.order where orderid=$orderid";
         $res = pg_query($conn, $sq) or die(pg_result_error($conn));
         if (pg_num_rows($res) == 1) {
           pg_query($conn, "UPDATE `orderdetail` SET `Quality`='$quality' WHERE OrderID='$orderid' and ProductID='$productid'")

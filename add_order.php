@@ -40,7 +40,7 @@
     } else if (trim($cusid) == "") {
       echo "<script type='text/javascript'>alert('CustomerID can not be empty');</script>";
     } else {
-      $sq = "select * from public.order where OrderID=$orderid";
+      $sq = "select * from public.order where orderid=$orderid";
       $res = pg_query($conn, $sq) or die(pg_result_error($conn));
       if (pg_num_rows($res) == 0) {
         pg_query($conn, "INSERT INTO `order`(`OrderID`, `CustomerID`) VALUES ($orderid,$cusid)")

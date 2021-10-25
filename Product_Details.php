@@ -51,16 +51,16 @@
     include_once('connection.php');
     if (isset($_GET["id"])) {
       $id = $_GET["id"];
-      $result = pg_query($conn, "select*from public.product where ProductID='$id'") or die(pg_result_error($conn));
+      $result = pg_query($conn, "select*from public.product where productid='$id'") or die(pg_result_error($conn));
       $row = pg_fetch_array($result, PGSQL_ASSOC);
       $proid = $row['ProductID'];
       $proname = $row['ProductName'];
       $price = $row['Price'];
       $brandid = $row['BrandID'];
       $desc = $row['Description'];
-      $result1 = pg_query($conn, "select*from public.brand where BrandID='$brandid'") or die(pg_result_error($conn));
+      $result1 = pg_query($conn, "select*from public.brand where brandid='$brandid'") or die(pg_result_error($conn));
       $row1 = pg_fetch_array($result1, PGSQL_ASSOC);
-      $brandname = $row1['BrandName'];
+      $brandname = $row1['brandName'];
     }
     ?>
 

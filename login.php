@@ -33,7 +33,7 @@ if (isset($_GET['btn_login'])) {
 	$pa = $_GET['pass'];
 	include_once("connection.php");
 	$pass = md5($pa);
-	$res = pg_query($conn, "select * from public.customer where Username='$us' and Password='$pass'")
+	$res = pg_query($conn, "select * from public.customer where username='$us' and password='$pass'")
 		or die(pg_result_error($conn));
 	if (pg_num_rows($res) == 1) {
 		echo "<script type='text/javascript'>alert('Login Successful');</script>";

@@ -108,16 +108,16 @@
     <?php
     if (isset($_GET["id"])) {
         $id = $_GET["id"];
-        $sqlsring = "select * from product where ProductID='$id'";
+        $sqlsring = "select * from public.product where productid='$id'";
         $result = pg_query($conn, $sqlsring);
-        $row = pg_fetch_array($result, PGSQL_ASSOC);
-        $proname = $row["ProductName"];
-        $proid = $row["ProductID"];
-        $price = $row['Price'];
-        $pic = $row['Img'];
-        $stock = $row['Stock'];
-        $brand = $row['BrandID'];
-        $desciption = $row['Description'];
+        $row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+        $proname = $row["productname"];
+        $proid = $row["productid"];
+        $price = $row['price'];
+        $pic = $row['img'];
+        $stock = $row['stock'];
+        $brand = $row['brandid'];
+        $desciption = $row['description'];
     ?>
 
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">

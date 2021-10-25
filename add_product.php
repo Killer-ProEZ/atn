@@ -40,7 +40,7 @@
         $result = pg_query($conn, $sqlstring);
         echo "<select name='BrandList' class='form-control'>
 		<option value='0'>Choose category</option>";
-        while ($row = pg_fetch_array($result, PGSQL_ASSOC)) {
+        while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
             echo "<option value='" . $row['BrandID'] . "'>" . $row['BrandName'] . "</option>";
         }
         echo "</select>";
@@ -71,7 +71,7 @@
         } else {
             if ($pic['type'] == "image/jpg" || $pic['type'] == "image/jpeg" || $pic['type'] == "image/png" || $pic['type'] == "image/gif") {
                 if ($pic['size'] < 614400) {
-                    $sq = "select * from public.product where ProductID='$proid' or ProductName='$proname'";
+                    $sq = "select * from public.product where productid='$proid' or productname='$proname'";
                     $result = pg_query($conn, $sq);
                     if (pg_num_rows($result) == 0) {
                         copy($pic['tmp_name'], "product-imgs/" . $pic['name']);

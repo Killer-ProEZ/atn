@@ -81,14 +81,14 @@
           <?php
           $No = 1;
           $result = pg_query($conn, "SELECT * FROM public.order") or die(pg_result_error($conn));
-          while ($row = pg_fetch_array($result, PGSQL_ASSOC)) {
+          while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
           ?>
             <tr>
-              <td><?php echo $row["OrderID"]; ?></td>
-              <td><?php echo $row["CustomerID"]; ?></td>
-              <td><?php echo $row["OrderDate"]; ?></td>
-              <td><a href="?page=update_order&&id=<?php echo $row["OrderID"]; ?>"><i class="fas fa-pencil-alt"></i></a></td>
-              <td><a href="admin_order.php?function=del&&id=<?php echo $row["OrderID"]; ?>" onclick="deleteConfirm()"><i class="fas fa-trash-alt"></i></a></i></td>
+              <td><?php echo $row["orderid"]; ?></td>
+              <td><?php echo $row["customerid"]; ?></td>
+              <td><?php echo $row["orderdate"]; ?></td>
+              <td><a href="?page=update_order&&id=<?php echo $row["orderid"]; ?>"><i class="fas fa-pencil-alt"></i></a></td>
+              <td><a href="admin_order.php?function=del&&id=<?php echo $row["orderID"]; ?>" onclick="deleteConfirm()"><i class="fas fa-trash-alt"></i></a></i></td>
             </tr>
           <?php $No++;
           } ?>
