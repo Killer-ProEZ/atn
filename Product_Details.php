@@ -52,14 +52,14 @@
     if (isset($_GET["id"])) {
       $id = $_GET["id"];
       $result = pg_query($conn, "select*from public.product where productid='$id'") or die(pg_result_error($conn));
-      $row = pg_fetch_array($result, PGSQL_ASSOC);
-      $proid = $row['ProductID'];
-      $proname = $row['ProductName'];
-      $price = $row['Price'];
-      $brandid = $row['BrandID'];
-      $desc = $row['Description'];
+      $row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
+      $proid = $row['productid'];
+      $proname = $row['productname'];
+      $price = $row['price'];
+      $brandid = $row['brandid'];
+      $desc = $row['description'];
       $result1 = pg_query($conn, "select*from public.brand where brandid='$brandid'") or die(pg_result_error($conn));
-      $row1 = pg_fetch_array($result1, PGSQL_ASSOC);
+      $row1 = pg_fetch_array($result1, NULL, PGSQL_ASSOC);
       $brandname = $row1['brandName'];
     }
     ?>
@@ -73,7 +73,7 @@
             <div class="portfolio-details-slider swiper-container">
               <div class="swiper-wrapper align-items-center">
                 <div class="swiper-slide">
-                  <img src='product-imgs/<?php echo $row["Img"]; ?>' alt="laptop">
+                  <img src='product-imgs/<?php echo $row["img"]; ?>' class="img-fluid" alt="laptop">
                 </div>
               </div>
               <div class="swiper-pagination"></div>
