@@ -42,16 +42,16 @@
   include_once('connection.php');
   if (isset($_GET["id"])) {
     $id = $_GET["id"];
-    $result = pg_query($conn, "select*from public.customer where CustomerID='$id'") or die(pg_result_error($conn));
-    $row = pg_fetch_array($result, PGSQL_ASSOC);
-    $cusid = $row['CustomerID'];
-    $cusname = $row['CustomerName'];
-    $username = $row['UserName'];
-    $password = $row['Password'];
-    $tel = $row['Tel'];
-    $email = $row['Email'];
-    $address = $row['Address'];
-    $state = $row['State'];
+    $result = pg_query($conn, "select*from public.customer where customerid='$id'") or die(pg_result_error($conn));
+    $row = pg_fetch_array($result,NULL, PGSQL_ASSOC);
+    $cusid = $row['customerid'];
+    $cusname = $row['customername'];
+    $username = $row['username'];
+    $password = $row['password'];
+    $tel = $row['tel'];
+    $email = $row['email'];
+    $address = $row['address'];
+    $state = $row['state'];
   ?>
     <?php
     if (isset($_POST["btn_update"])) {
