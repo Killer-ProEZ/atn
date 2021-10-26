@@ -119,9 +119,9 @@
           $res = pg_query($conn, $sq);
           $pass1 = md5($pass1);
           if (pg_num_rows($res) == 0) {
-            pg_query($conn, "UPDATE `customer` SET 
-        `UserName`='$us',`Password`='$pass1',
-        `CustomerName`='$fname',`Tel`='$tel',`Email`='$email',`Address`='$address',`State`='$state' WHERE CustomerID='$cusid'")
+            pg_query($conn, "UPDATE public.customer SET 
+        username='$us',password='$pass1',
+        customername='$fname',tel='$tel',email='$email',address='$address',state='$state' WHERE customerid='$cusid'")
               or die(pg_result_error($conn));
             echo "<script type='text/javascript'>alert('Update Customer Successful');</script>";
             echo "<script> location.href='?page=customer'; </script>";
