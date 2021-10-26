@@ -37,7 +37,7 @@
         $res = pg_query($conn, $query) or die(pg_result_error($conn));
         $res1 = pg_query("select orderid from public.orderdetail order by orderid desc fetch first 1 rows only ");
         $row1 = pg_fetch_array($res1, NULL, PGSQL_ASSOC);
-        $orderid = $row1["orderid"];
+        $orderid = $row1["orderid"] + 1;
         foreach ($_SESSION["cart"] as $key => $row) {
             $query1 = "INSERT INTO public.orderdetail(orderid,productid,quality) VALUES (" . $orderid . ",'" . $key . "'," . $row['quanlity'] . ")";
             $res1 = pg_query($conn, $query1) or die(pg_result_error($conn));
