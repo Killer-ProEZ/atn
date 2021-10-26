@@ -48,7 +48,7 @@
       $sq = "select * from public.orderdetail where orderid=$orderid and productid='$proid'";
       $res = pg_query($conn, $sq) or die(pg_result_error($conn));
       if (pg_num_rows($res) == 0) {
-        pg_query($conn, "INSERT INTO `orderdetail`(`OrderID`, `ProductID`, `Quality`) VALUES ('$orderid','$proid','$quality')")
+        pg_query($conn, "INSERT INTO public.orderdetail(orderid, productid, quality) VALUES ('$orderid','$proid','$quality')")
           or die(pg_result_error($conn));
         echo "<script type='text/javascript'>alert('Add OrderDetail Successful');</script>";
         echo "<script> location.href='admin.php?page=orderdetail'; </script>";

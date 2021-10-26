@@ -37,8 +37,8 @@
             $sq = "select customerid from customer where username='$username'";
             $res = pg_query($conn, $sq) or die(pg_result_error($conn));
             $row = pg_fetch_array($res, NULL, PGSQL_ASSOC);
-            $id = $row['CustomerID'];
-            pg_query($conn, "INSERT INTO `feedback`( `CustomerID`, `Subject`, `Content`) VALUES ('$id','$sub','$mes')")
+            $id = $row['customerid'];
+            pg_query($conn, "INSERT INTO public.feedback( customerid, subject, content) VALUES ('$id','$sub','$mes')")
                 or die(pg_result_error($conn));
             echo "<script type='text/javascript'>alert('Add Feedback Successful');</script>";
         }

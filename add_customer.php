@@ -64,7 +64,7 @@
       $sq = "select * from public.customer where username='$us' or email='$email'";
       $res = pg_query($conn, $sq);
       if (pg_num_rows($res) == 0) {
-        pg_query($conn, "Insert into customer (Username, Password,CustomerName,Tel,Email,Address,State) 
+        pg_query($conn, "Insert into public.customer (username, password,customername,tel,email,address,state) 
         values('$us','$pass','$fname',$phone,'$email','$address',$state)")
           or die(pg_result_error($conn));
         echo "<script type='text/javascript'>alert('Add Successful');</script>";

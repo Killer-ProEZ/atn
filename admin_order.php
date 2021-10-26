@@ -88,7 +88,7 @@
               <td><?php echo $row["customerid"]; ?></td>
               <td><?php echo $row["orderdate"]; ?></td>
               <td><a href="?page=update_order&&id=<?php echo $row["orderid"]; ?>"><i class="fas fa-pencil-alt"></i></a></td>
-              <td><a href="admin_order.php?function=del&&id=<?php echo $row["orderID"]; ?>" onclick="deleteConfirm()"><i class="fas fa-trash-alt"></i></a></i></td>
+              <td><a href="admin_order.php?function=del&&id=<?php echo $row["orderid"]; ?>" onclick="deleteConfirm()"><i class="fas fa-trash-alt"></i></a></i></td>
             </tr>
           <?php $No++;
           } ?>

@@ -76,8 +76,8 @@
                     if (pg_num_rows($result) == 0) {
                         copy($pic['tmp_name'], "product-imgs/" . $pic['name']);
                         $filePic = $pic['name'];
-                        $sqlstring = "Insert into product(
-                            `ProductID`, `ProductName`, `Price`, `Img`, `Stock`, `Description`, `BrandID`) values ('$proid','$proname',$price,'$filePic',$stock,'$description','$brand')";
+                        $sqlstring = "Insert into public.product(
+                            productid, productname, price, img, stock, description, brandid) values ('$proid','$proname',$price,'$filePic',$stock,'$description','$brand')";
                         pg_query($conn, $sqlstring) or die(pg_result_error($conn));
                         echo "<script type='text/javascript'>alert('Add product Successful');</script>";
                         echo '<meta http-equiv="refresh" content="0;URL=admin.php?page=product"/>';

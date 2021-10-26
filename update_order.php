@@ -54,7 +54,7 @@
         $sq = "select * from public.order where orderid=$orderid";
         $res = pg_query($conn, $sq) or die(pg_result_error($conn));
         if (pg_num_rows($res) == 1) {
-          pg_query($conn, "UPDATE `order` SET `CustomerID`='$cusid' WHERE OrderID=$orderid")
+          pg_query($conn, "UPDATE public.order SET customerid='$cusid' WHERE orderid=$orderid")
             or die(pg_result_error($conn));
           echo "<script type='text/javascript'>alert('Update Order Successful');</script>";
           echo "<script> location.href='?page=order'; </script>";

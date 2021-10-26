@@ -43,7 +43,7 @@
       $sq = "select * from public.order where orderid=$orderid";
       $res = pg_query($conn, $sq) or die(pg_result_error($conn));
       if (pg_num_rows($res) == 0) {
-        pg_query($conn, "INSERT INTO `order`(`OrderID`, `CustomerID`) VALUES ($orderid,$cusid)")
+        pg_query($conn, "INSERT INTO public.order(orderid, customerid) VALUES ($orderid,$cusid)")
           or die(pg_result_error($conn));
         echo "<script type='text/javascript'>alert('Add Order Successful');</script>";
         echo "<script> location.href='admin.php?page=order'; </script>";

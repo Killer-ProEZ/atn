@@ -80,9 +80,9 @@
                     if (pg_num_rows($result) == 0) {
                         copy($pic['tmp_name'], "product-imgs/" . $pic['name']);
                         $filePic = $pic['name'];
-                        $sqlstring = "UPDATE `product` SET
-                        `ProductName`='$proname',`Price`='$price',`Img`='$filePic',`Stock`='$stock',
-                        `Description`='$description',`BrandID`='$brand'WHERE ProductID='$proid'";
+                        $sqlstring = "UPDATE public.product SET
+                        productname='$proname',price='$price',img='$filePic',stock='$stock',
+                        description='$description',brandid='$brand'WHERE productid='$proid'";
                         pg_query($conn, $sqlstring) or die(pg_result_error($conn));
                         echo "<script type='text/javascript'>alert('Update Product Successful');</script>";
                         echo "<script> location.href='?page=product'; </script>";

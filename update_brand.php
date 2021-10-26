@@ -34,7 +34,7 @@
   include_once('connection.php');
   if (isset($_GET["id"])) {
     $id = $_GET["id"];
-    $result = pg_query($conn, "select*from public.brand where BrandID='$id'") or die(pg_result_error($conn));
+    $result = pg_query($conn, "select*from public.brand where brandid='$id'") or die(pg_result_error($conn));
     $row = pg_fetch_array($result, NUll, PGSQL_ASSOC);
     $brandid = $row['brandid'];
     $brandname = $row['brandname'];
@@ -52,7 +52,7 @@
         $sq = "select * from public.brand where brandname='$brandname' and brandid!='$brandid'";
         $res = pg_query($conn, $sq);
         if (pg_num_rows($res) == 0) {
-          pg_query($conn, "UPDATE `brand` SET `BrandName`='$brandname' WHERE BrandID='$brandid'")
+          pg_query($conn, "UPDATE public.brand SET brandname='$brandname' WHERE brandid='$brandid'")
             or die(pg_result_error($conn));
           echo "<script type='text/javascript'>alert('Update Brand Successful');</script>";
           echo "<script> location.href='admin_brand.php'; </script>";

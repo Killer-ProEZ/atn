@@ -43,7 +43,7 @@
   if (isset($_GET["id"])) {
     $id = $_GET["id"];
     $result = pg_query($conn, "select*from public.customer where customerid='$id'") or die(pg_result_error($conn));
-    $row = pg_fetch_array($result,NULL, PGSQL_ASSOC);
+    $row = pg_fetch_array($result, NULL, PGSQL_ASSOC);
     $cusid = $row['customerid'];
     $cusname = $row['customername'];
     $username = $row['username'];
