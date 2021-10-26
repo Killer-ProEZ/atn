@@ -41,7 +41,7 @@
         foreach ($_SESSION["cart"] as $key => $row) {
             $query1 = "INSERT INTO public.orderdetail(orderid,productid,quality) VALUES (" . $orderid . ",'" . $key . "'," . $row['quanlity'] . ")";
             $res1 = pg_query($conn, $query1) or die(pg_result_error($conn));
-            $query1 = "UPDATE public.product SET Stock=Stock-" . $row['quanlity'] . " WHERE productid='" . $key . "'";
+            $query1 = "UPDATE public.product SET stock=stock-" . $row['quanlity'] . " WHERE productid='" . $key . "'";
             $res1 = pg_query($conn, $query1) or die(pg_result_error($conn));
         }
         unset($_SESSION["cart"]);
