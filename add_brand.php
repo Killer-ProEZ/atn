@@ -43,7 +43,7 @@
       $sq = "select * from brand where brandname='$brandname' or brandid='$brandid'";
       $res = pg_query($conn, $sq);
       if (pg_num_rows($res) == 0) {
-        pg_query($conn, "INSERT INTO `brand`(`BrandID`, `BrandName`) VALUES ('$brandid','$brandname')")
+        pg_query($conn, "INSERT INTO public.brand(brandid, brandname) VALUES ('$brandid','$brandname')")
           or die(pg_result_error($conn));
         echo "<script type='text/javascript'>alert('Add Brand Successful');</script>";
         echo "<script> location.href='admin.php?page=brand'; </script>";
