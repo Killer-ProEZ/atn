@@ -29,17 +29,19 @@
     if (isset($_POST["btn_payment"])) {
         include_once("connection.php");
         $username = $_SESSION['us'];
-        $sq = "select CustomerID from customer where UserName='$username'";
+        $sq = "select customerid from public.customer where username='$username'";
         $res = pg_query($conn, $sq) or die(pg_result_error($conn));
-        $row = pg_fetch_array($res, MYSQLI_ASSOC);
-        $cusid = $row["CustomerID"];
-        $query = "INSERT INTO `order`(`CustomerID`) VALUES ('$cusid')";
+        $row = pg_fetch_array($res, NULL, PGSQL_ASSOC);
+        $cusid = $row["customerid"];
+        $query = "INSERT INTO public.order(customerid) VALUES ('$cusid')";
         $res = pg_query($conn, $query) or die(pg_result_error($conn));
-        $orderid = pg_insert_id($conn);
+        $res1 = pg_query("select orderid from public.orderdetail order by orderid desc fetch first 1 rows only ");
+        $row1 = pg_fetch_array($res1, NULL, PGSQL_ASSOC);
+        $orderid = $row1["orderid"];
         foreach ($_SESSION["cart"] as $key => $row) {
-            $query1 = "INSERT INTO `orderdetail`(`OrderID`,`ProductID`,`Quality`) VALUES (" . $orderid . ",'" . $key . "'," . $row['quanlity'] . ")";
+            $query1 = "INSERT INTO public.orderdetail(orderid,productid,quality) VALUES (" . $orderid . ",'" . $key . "'," . $row['quanlity'] . ")";
             $res1 = pg_query($conn, $query1) or die(pg_result_error($conn));
-            $query1 = "UPDATE `product` SET `Stock`=`Stock`-" . $row['quanlity'] . " WHERE ProductID='" . $key . "'";
+            $query1 = "UPDATE public.product SET Stock=Stock-" . $row['quanlity'] . " WHERE productid='" . $key . "'";
             $res1 = pg_query($conn, $query1) or die(pg_result_error($conn));
         }
         unset($_SESSION["cart"]);
