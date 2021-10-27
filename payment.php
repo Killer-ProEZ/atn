@@ -43,7 +43,6 @@
             $res1 = pg_query($conn, $query1) or die(pg_result_error($conn));
             $query1 = "UPDATE public.product SET stock=stock-" . $row['quanlity'] . " WHERE productid='" . $key . "'";
             $res1 = pg_query($conn, $query1) or die(pg_result_error($conn));
-            echo "<script type='text/javascript'>alert('Payment success');</script>";
         }
         unset($_SESSION["cart"]);
         echo "<script type='text/javascript'>alert('Payment success');</script>";
