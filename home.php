@@ -1,5 +1,5 @@
  <!-- ======= Hero Section ======= -->
- <section id="hero" class="d-flex align-items-center" style="background-image: url('/product-imgs/background.jpg');">
+ <section id="hero" class="d-flex align-items-center" style="background-image: url('product-imgs/background.jpg');">
    <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
      <h1>Incredible Prices on All Your Favorite Items</h1>
      <h2>Design is thinking made visual</h2>
