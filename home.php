@@ -1,5 +1,5 @@
  <!-- ======= Hero Section ======= -->
- <section id="hero" class="d-flex align-items-center" style="background-image: url('assets/img/Background.jpg');">
+ <section id="hero" class="d-flex align-items-center" style="background-image: url('assets/img/background.jpg');">
    <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
      <h1>Incredible Prices on All Your Favorite Items</h1>
      <h2>Design is thinking made visual</h2>
@@ -20,7 +20,7 @@
          </div>
 
          <div class="col-lg-2 col-md-4 col-6 " data-aos="zoom-in" data-aos-delay="300">
-           <img src="assets/img/logo_lego.png" class="img-fluid" alt="">
+           <img src="assets/img/Disney_Princess_Logo.png" class="img-fluid" alt="">
          </div>
 
          <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="400">

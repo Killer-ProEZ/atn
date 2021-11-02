@@ -116,6 +116,12 @@
                 OrderDetail
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="?page=store">
+                <i class="fas fa-store"></i>
+                Store
+              </a>
+            </li>
           </ul>
         </div>
       </nav>
@@ -124,6 +130,9 @@
         $page = $_GET['page'];
         if ($page == 'order') {
           include_once("admin_order.php");
+        }
+        if ($page == 'store') {
+          include_once("admin_store.php");
         }
         if ($page == 'product') {
           include_once("admin_product.php");
