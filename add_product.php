@@ -41,7 +41,21 @@
         echo "<select name='BrandList' class='form-control'>
 		<option value='0'>Choose category</option>";
         while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
-            echo "<option value='" . $row['BrandID'] . "'>" . $row['BrandName'] . "</option>";
+            echo "<option value='" . $row['brandid'] . "'>" . $row['brandname'] . "</option>";
+        }
+        echo "</select>";
+    }
+    ?>
+     <?php
+    include_once("connection.php");
+    function bind_Store_List($conn)
+    {
+        $sqlstring = "select * from public.store";
+        $result = pg_query($conn, $sqlstring);
+        echo "<select name='BrandList' class='form-control'>
+		<option value='0'>Choose Store</option>";
+        while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
+            echo "<option value='" . $row['storeid'] . "'>" . $row['storename'] . "</option>";
         }
         echo "</select>";
     }
@@ -151,6 +165,19 @@
                     <div class="form-outline">
                         <label class="form-label" for="stock">Stock</label>
                         <input name="stock" type="number" id="stock" class="form-control" placeholder="Stock" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="form-outline">
+                        <label class="form-label" for="storename">Store</label>
+                        <div><?php bind_Store_List($conn);?></div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-outline">
                     </div>
                 </div>
             </div>
