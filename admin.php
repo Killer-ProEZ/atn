@@ -155,6 +155,9 @@
         if ($page == 'add_brand') {
           include_once("add_brand.php");
         }
+        if ($page == 'add_store') {
+          include_once("add_store.php");
+        }
         if ($page == 'add_customer') {
           include_once("add_customer.php");
         }
@@ -169,6 +172,9 @@
         }
         if ($page == 'update_brand') {
           include_once("update_brand.php");
+        }
+        if ($page == 'update_store') {
+          include_once("update_store.php");
         }
         if ($page == 'update_customer') {
           include_once("update_customer.php");
