@@ -13,26 +13,26 @@
      <div class="container">
        <div class="row">
          <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="100">
-           <img src="assets/img/MacBook_Logo.png" class="img-fluid" alt="">
+           <img src="assets/img/barbie_logo.png" class="img-fluid" alt="">
          </div>
          <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="200">
-           <img src="assets/img/Lenovo-logo.png" class="img-fluid" alt="">
+           <img src="assets/img/hot-wheels-logo.png" class="img-fluid" alt="">
          </div>
 
          <div class="col-lg-2 col-md-4 col-6 " data-aos="zoom-in" data-aos-delay="300">
-           <img src="assets/img/HP_logo.png" class="img-fluid" alt="">
+           <img src="assets/img/logo_lego.png" class="img-fluid" alt="">
          </div>
 
          <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="400">
-           <img src="assets/img/Dell_logo.png" class="img-fluid" alt="">
+           <img src="assets/img/schleich.png" class="img-fluid" alt="">
          </div>
 
          <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="500">
-           <img src="assets/img/Asus_Logo.png" class="img-fluid" alt="">
+           <img src="assets/img/fore_logo.png" class="img-fluid" alt="">
          </div>
 
          <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="600">
-           <img src="assets/img/Acer_logo.png" class="img-fluid" alt="">
+           <img src="assets/img/Nerf_logo.png" class="img-fluid" alt="">
          </div>
        </div>
      </div>
@@ -73,32 +73,32 @@
              <button name="search" class="btn btn-primary" type="submit" id="button-addon2">Search</button>
            </div>
          </form>
-       </div>
-       <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-         <?php
-          include_once('connection.php');
-          $No = 1;
-          $result = pg_query($conn, "Select * from public.product");
-          while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
-          ?>
-           <div class="col-lg-3 col-md-6 portfolio-item">
-             <div class="portfolio-wrap">
-               <img src='product-imgs/<?php echo $row["img"]; ?>' class="img-fluid" alt="">
-               <div class="portfolio-info">
-                 <h4><?php echo $row["productname"]; ?></h4>
-                 <p><?php echo $row["price"] . "$"; ?></p>
-                 <div class="portfolio-links">
-                   <?php $addid = $row["productid"] ?>
-                   <form action="get">
-                     <a href="add_cart.php?id=<?php echo $row["productid"]; ?>" data-gallery="portfolioGallery" class="portfolio-lightbox" title="ADD"><i class="fas fa-plus"></i></a>
-                     <a href="?page=prodetail&&id=<?php echo $row["productid"]; ?>" title="More Details"><i class="fas fa-link"></i></a>
-                   </form>
+         <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+           <?php
+            include_once('connection.php');
+            $No = 1;
+            $result = pg_query($conn, "Select * from public.product");
+            while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
+            ?>
+             <div class="col-lg-3 col-md-6 portfolio-item">
+               <div class="portfolio-wrap">
+                 <img src='product-imgs/<?php echo $row["img"]; ?>' class="img-fluid" alt="">
+                 <div class="portfolio-info">
+                   <h4><?php echo $row["productname"]; ?></h4>
+                   <p><?php echo $row["price"] . "$"; ?></p>
+                   <div class="portfolio-links">
+                     <?php $addid = $row["productid"] ?>
+                     <form action="get">
+                       <a href="add_cart.php?id=<?php echo $row["productid"]; ?>" data-gallery="portfolioGallery" class="portfolio-lightbox" title="ADD"><i class="fas fa-plus"></i></a>
+                       <a href="?page=prodetail&&id=<?php echo $row["productid"]; ?>" title="More Details"><i class="fas fa-link"></i></a>
+                     </form>
+                   </div>
                  </div>
                </div>
              </div>
-           </div>
-         <?php $No++;
-          } ?>
+           <?php $No++;
+            } ?>
+         </div>
        </div>
        </div>
      </section><!-- End Portfolio Section -->
