@@ -39,6 +39,7 @@
         $brandid = $row['storeid'];
         $brandname = $row['storename'];
         $address = $row['address'];
+        $revenue=$row['revenue'];
     ?>
         <?php
         if (isset($_POST["btn_update"])) {
@@ -53,7 +54,7 @@
                 $sq = "select * from public.store where storename='$brandname' and storeid!='$brandid'";
                 $res = pg_query($conn, $sq);
                 if (pg_num_rows($res) == 0) {
-                    pg_query($conn, "UPDATE public.store SET storename='$brandname' ,address='$address' WHERE storeid='$brandid'")
+                    pg_query($conn, "UPDATE public.store SET storename='$brandname' ,address='$address', revenue='$revenue' WHERE storeid='$brandid'")
                         or die(pg_result_error($conn));
                     echo "<script type='text/javascript'>alert('Update Store Successful');</script>";
                     echo "<script> location.href='admin_store.php'; </script>";
@@ -97,7 +98,10 @@
                 <label class="form-label" for="address">Address</label>
                 <input name="address" type="text" id="address" class="form-control" placeholder="Address" value="<?php echo $address; ?>" />
             </div>
-
+            <div class="form-outline mb-4">
+                <label class="form-label" for="revenue">Revenue</label>
+                <input name="revenue" type="text" id="revenue" class="form-control" placeholder="Address" value="<?php echo $revenue; ?>" />
+            </div>
             <!-- Submit button -->
             <div class="btn-func">
                 <button name="btn_update" type="submit" class="btn btn-primary">Update</button>
