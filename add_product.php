@@ -51,7 +51,7 @@
     {
         $sqlstring = "select * from public.store";
         $result = pg_query($conn, $sqlstring);
-        echo "<select name='BrandList' class='form-control'>
+        echo "<select name='StoreList' class='form-control'>
 		<option value='0'>Choose Store</option>";
         while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
             echo "<option value='" . $row['storeid'] . "'>" . $row['storename'] . "</option>";
@@ -66,6 +66,7 @@
         $price = $_POST["price"];
         $stock = $_POST["stock"];
         $brand = $_POST["BrandList"];
+        $store = $_POST["StoreList"];
         $pic = $_FILES['img'];
         $description = $_POST['description'];
 
@@ -75,6 +76,8 @@
             echo "<script type='text/javascript'>alert('ProductName can not be empty');</script>";
         } else if (trim($brand) == "") {
             echo "<script type='text/javascript'>alert('Brand can not be empty');</script>";
+        } else if (trim($store) == "") {
+            echo "<script type='text/javascript'>alert('Store can not be empty');</script>";
         } else if (trim($description) == "") {
             echo "<script type='text/javascript'>alert('Description can not be empty');</script>";
         } else if (!is_numeric($price)) {
@@ -90,7 +93,7 @@
                         copy($pic['tmp_name'], "product-imgs/" . $pic['name']);
                         $filePic = $pic['name'];
                         $sqlstring = "Insert into public.product(
-                            productid, productname, price, img, stock, description, brandid) values ('$proid','$proname',$price,'$filePic',$stock,'$description','$brand')";
+                            productid, productname, price, img, stock, description, brandid, storeid) values ('$proid','$proname',$price,'$filePic',$stock,'$description','$brand','$store')";
                         pg_query($conn, $sqlstring) or die(pg_result_error($conn));
                         echo "<script type='text/javascript'>alert('Add product Successful');</script>";
                         echo '<meta http-equiv="refresh" content="0;URL=admin.php?page=store"/>';
