@@ -47,7 +47,6 @@
     }
     ?>
      <?php
-    include_once("connection.php");
     function bind_Store_List($conn)
     {
         $sqlstring = "select * from public.store";
@@ -94,7 +93,7 @@
                             productid, productname, price, img, stock, description, brandid) values ('$proid','$proname',$price,'$filePic',$stock,'$description','$brand')";
                         pg_query($conn, $sqlstring) or die(pg_result_error($conn));
                         echo "<script type='text/javascript'>alert('Add product Successful');</script>";
-                        echo '<meta http-equiv="refresh" content="0;URL=admin.php?page=product"/>';
+                        echo '<meta http-equiv="refresh" content="0;URL=admin.php?page=store"/>';
                     } else {
                         echo "<script type='text/javascript'>alert('Duplicate product ID or Name');</script>";
                     }
