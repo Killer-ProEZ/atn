@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.82.0">
-    <title>Brand Management</title>
+    <title>Store Management</title>
     <!-- WebIcon -->
     <link rel="icon" href="assets/img/Logo_T&M.png">
     <script src="https://kit.fontawesome.com/a2c5b72efa.js" crossorigin="anonymous"></script>
@@ -62,8 +62,8 @@
             </div>
         </div>
 
-        <h2>Brand</h2>
-        <div class="add"><a href="admin.php?page=add_brand"><i class="fas fa-plus"></i>&nbsp;Add Brand</a></div>
+        <h2>Store</h2>
+        <div class="add"><a href="admin.php?page=add_store"><i class="fas fa-plus"></i>&nbsp;Add Store</a></div>
         <div class="table-responsive">
             <table class="table table-striped table-sm">
                 <thead>

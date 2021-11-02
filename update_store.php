@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.82.0">
-    <title>Update Brand</title>
+    <title>Update Store</title>
     <!-- WebIcon -->
     <link rel="icon" href="assets/img/Logo_T&M.png">
     <script src="https://kit.fontawesome.com/a2c5b72efa.js" crossorigin="anonymous"></script>
@@ -56,11 +56,11 @@
                     pg_query($conn, "UPDATE public.store SET storename='$brandname' ,address='$address' WHERE storeid='$brandid'")
                         or die(pg_result_error($conn));
                     echo "<script type='text/javascript'>alert('Update Store Successful');</script>";
-                    echo "<script> location.href='admin_brand.php'; </script>";
+                    echo "<script> location.href='admin_store.php'; </script>";
                     exit;
                 } else {
                     echo "<script type='text/javascript'>alert('Update StoreID or BrandName');</script>";
-                    echo "<script> location.href='update_brand.php'; </script>";
+                    echo "<script> location.href='update_store.php'; </script>";
                     exit;
                 }
             }
@@ -79,7 +79,7 @@
             </div>
         </div>
 
-        <h2>Update Brand</h2>
+        <h2>Update Store</h2>
         <div class="btn-cancel">
             <a class="btn btn-danger" href="?page=brand" role="button"><i class="fas fa-times"></i><Span> Cancel</Span></a>
         </div>
