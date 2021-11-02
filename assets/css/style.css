@@ -539,11 +539,7 @@ section {
 .sale_img p {
   text-align: center;
 }
-.about img:hover {
-  filter: none;
-  transform: scale(1.1);
-  transition: all 1s;
-}
+
 .about .content p:last-child {
   margin-bottom: 0;
 }
