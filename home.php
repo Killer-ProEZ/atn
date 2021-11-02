@@ -60,6 +60,7 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+</section>
      <section id="portfolio" class="portfolio">
        <div class="container">
          <div class="section-title" data-aos="fade-left">
