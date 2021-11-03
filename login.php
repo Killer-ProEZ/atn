@@ -63,7 +63,7 @@ if (isset($_GET['btn_login'])) {
 					<span class="login100-form-title-1">
 						Login
 					</span>
-					<span class="remind">New to this site? <a href="signin.html">Sign Up</a></span>
+					<span class="remind">New to this site? <a href="signin.php">Sign Up</a></span>
 				</div>
 
 				<form name="login" class="login100-form validate-form" method="GET">
