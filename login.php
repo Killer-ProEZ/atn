@@ -35,12 +35,19 @@ if (isset($_GET['btn_login'])) {
 	$pass = md5($pa);
 	$res = pg_query($conn, "select * from public.customer where username='$us' and password='$pass'")
 		or die(pg_result_error($conn));
-	if (pg_num_rows($res) == 1) {
+	$row = pg_fetch_array($res, NULL, PGSQL_ASSOC)
+	if (pg_num_rows($res) == 1 && $row['state']==0) {
 		echo "<script type='text/javascript'>alert('Login Successful');</script>";
 		$_SESSION["us"] = "$us";
 		echo "<script> location.href='index.php' </script>";
 		exit;
-	} else {
+	}elseif (pg_num_rows($res) == 1 && $row['state']==1) {
+		echo "<script type='text/javascript'>alert('Login Successful');</script>";
+		$_SESSION["us"] = "$us";
+		echo "<script> location.href='admin_product.php' </script>";
+		exit;
+	}
+	 else {
 		echo "<script type='text/javascript'>alert('You loged in fail');</script>";
 		echo "<script> location.href='login.php'; </script>";
 		exit;
