@@ -1,4 +1,4 @@
- <!-- ======= Hero Section ======= -->
+<!-- ======= Hero Section ======= -->
  <section id="hero" class="d-flex align-items-center" style="background-image: url('product-imgs/background.jpg');">
    <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
      <h1>Incredible Prices on All Your Favorite Items</h1>
@@ -41,7 +41,7 @@
    <section id="about" class="about">
      <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
        <div class="carousel-inner">
-         <div class="carousel-item">
+         <div class="carousel-item active">
            <img src="assets/img/hostdeal1.jpg" class="d-block w-100" alt="...">
          </div>
          <div class="carousel-item">
