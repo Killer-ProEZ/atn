@@ -44,7 +44,7 @@ if (isset($_GET['btn_login'])) {
 	}elseif (pg_num_rows($res) == 1 && $row['state'] == 1) {
 		echo "<script type='text/javascript'>alert('Login Successful');</script>";
 		$_SESSION["us"] = "$us";
-		echo "<script> location.href='admin_product.php' </script>";
+		echo "<script> location.href='admin.php' </script>";
 		exit;
 	}
 	 else {

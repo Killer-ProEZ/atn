@@ -62,7 +62,7 @@ session_start();
                       else{
                       ?>
                       <li><a class="nav-link scrollto" href="admin_login.html" target="_blank">Admin</a></li>
-                      <li><a class="nav-link scrollto" href="?page=login">Login</a></li>
+                      <li><a class="nav-link scrollto" href="login.php">Login</a></li>
                       <li>
                       <a class="nav-link scrollto" href="?page=cart"><i id="uilogo" class="nav-link scrollto fas fa-shopping-cart"></i></a>
                       </li>
@@ -83,9 +83,6 @@ session_start();
    }
    if($page=='logout'){
     include_once("logout.php");
-  }
-  if($page=='login'){
-    include_once("login.php");
   }
   if($page=='cart'){
     include_once("cart.php");
