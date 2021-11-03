@@ -75,7 +75,6 @@
          </form>
          <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
            <?php
-            include_once('connection.php');
             $No = 1;
             $result = pg_query($conn, "Select * from public.product");
             while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
