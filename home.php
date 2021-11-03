@@ -1,4 +1,4 @@
-<!-- ======= Hero Section ======= -->
+ <!-- ======= Hero Section ======= -->
  <section id="hero" class="d-flex align-items-center" style="background-image: url('product-imgs/background.jpg');">
    <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
      <h1>Incredible Prices on All Your Favorite Items</h1>
@@ -42,13 +42,13 @@
      <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
        <div class="carousel-inner">
          <div class="carousel-item active">
-           <img src="assets/img/hostdeal1.jpg" class="d-block w-100" alt="...">
+           <img src="assets/img/Hostdeal_1.png" class="d-block w-100" alt="...">
          </div>
          <div class="carousel-item">
-           <img src="assets/img/hostdeal2.jpg" class="d-block w-100" alt="...">
+           <img src="assets/img/Hostdeal_2.png" class="d-block w-100" alt="...">
          </div>
          <div class="carousel-item">
-           <img src="assets/img/hostdeal3.jpg" class="d-block w-100" alt="...">
+           <img src="assets/img/Hostdeal_3.png" class="d-block w-100" alt="...">
          </div>
        </div>
      </div>
@@ -75,6 +75,7 @@
          </form>
          <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
            <?php
+            include_once('connection.php');
             $No = 1;
             $result = pg_query($conn, "Select * from public.product");
             while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
