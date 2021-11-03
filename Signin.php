@@ -29,12 +29,12 @@ if (isset($_POST["btn_signin"])) {
 	$address = $_POST["address"];
 	if (strcmp($pass1, $pass2) != 0) {
 		echo "<script type='text/javascript'>alert('Passoword do not match');</script>";
-		echo "<script> location.href='signin.html'; </script>";
+		echo "<script> location.href='signin.php'; </script>";
 		exit;
 	}
 	if (strlen($pass1) < 6 || strlen($pass1) > 20) {
 		echo "<script type='text/javascript'>alert('Password length must be from 6 to 20 characters');</>";
-		echo "<script> location.href='signin.html'; </script>";
+		echo "<script> location.href='signin.php'; </script>";
 		exit;
 	}
 	$pass = md5($pass1);
@@ -49,7 +49,7 @@ if (isset($_POST["btn_signin"])) {
 		exit;
 	} else {
 		echo "<script type='text/javascript'>alert('Dublicate Username or Email');</script>";
-		echo "<script> location.href='signin.html'; </script>";
+		echo "<script> location.href='signin.php'; </script>";
 		exit;
 	}
 } ?>
