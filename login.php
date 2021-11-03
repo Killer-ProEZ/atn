@@ -36,12 +36,12 @@ if (isset($_GET['btn_login'])) {
 	$res = pg_query($conn, "select * from public.customer where username='$us' and password='$pass'")
 		or die(pg_result_error($conn));
 	$row = pg_fetch_array($res, NULL, PGSQL_ASSOC)
-	if (pg_num_rows($res) == 1 && $row['state']==0) {
+	if (pg_num_rows($res) == 1 && $row['state'] == 0) {
 		echo "<script type='text/javascript'>alert('Login Successful');</script>";
 		$_SESSION["us"] = "$us";
 		echo "<script> location.href='index.php' </script>";
 		exit;
-	}elseif (pg_num_rows($res) == 1 && $row['state']==1) {
+	}elseif (pg_num_rows($res) == 1 && $row['state'] == 1) {
 		echo "<script type='text/javascript'>alert('Login Successful');</script>";
 		$_SESSION["us"] = "$us";
 		echo "<script> location.href='admin_product.php' </script>";
