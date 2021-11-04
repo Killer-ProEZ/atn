@@ -51,7 +51,6 @@ session_start();
             <?php if(isset($_SESSION["us"])&&$_SESSION["us"]!=""){ ?>
               <?php $us=$_SESSION["us"];?>
             <li><a class="nav-link scrollto" href="?page=feedback">Feedback</a></li>
-            <li><a class="nav-link scrollto" href="admin_login.html" target="_blank">Admin</a></li>
   
                       <li><a class="nav-link scrollto" href="profile.php?id=<?php echo $us;?>"><?php echo "Hi ".$_SESSION["us"];?></a></li>
                       <li><a class="nav-link scrollto" href="?page=logout">Logout</a></li>
@@ -61,7 +60,6 @@ session_start();
                       <?php }
                       else{
                       ?>
-                      <li><a class="nav-link scrollto" href="admin_login.html" target="_blank">Admin</a></li>
                       <li><a class="nav-link scrollto" href="login.php">Login</a></li>
                       <li>
                       <a class="nav-link scrollto" href="?page=cart"><i id="uilogo" class="nav-link scrollto fas fa-shopping-cart"></i></a>
