@@ -41,8 +41,8 @@ if (isset($_POST["btn_signin"])) {
 	$sq = "select * from public.customer where username='$us' or email='$email'";
 	$res = pg_query($conn, $sq);
 	if (pg_num_rows($res) == 0) {
-		pg_query($conn, "Insert into public.customer (username, password, customername,tel,email,address,state) 
-        values('$us','$pass','$fname',$phone,'$email','$address',0)")
+		pg_query($conn, "INSERT INTO public.customer (username, password, customername,tel,email,address,state) 
+        VALUES ('$us','$pass','$fname',$phone,'$email','$address',0)")
 			or die(pg_result_error($conn));
 		echo "<script type='text/javascript'>alert('You have registered successfully');</script>";
 		echo "<script> location.href='index.php'; </script>";
@@ -121,6 +121,7 @@ if (isset($_POST["btn_signin"])) {
 			</div>
 		</div>
 	</div>
+
 	<!--===============================================================================================-->
 	<link rel="stylesheet" href=" https://code.jquery.com/jquery-3.6.0.min.js">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
