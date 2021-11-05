@@ -45,13 +45,13 @@
   if (isset($_GET["function"]) == "del") {
     if (isset($_GET["id"])) {
       $id = $_GET["id"];
-      $sq = "select Img from public.product where ProductID='$id'";
+      $sq = "select img from public.product where productid='$id'";
       $res = pg_query($conn, $sq);
       $row = pg_fetch_array($res, PGSQL_ASSOC);
-      $filePic = $row['Img'];
+      $filePic = $row['img'];
       unlink("product-imgs/" . $filePic);
-      pg_query($conn, "delete from public.orderdetail where ProductID='$id'");
-      pg_query($conn, "delete from public.product where ProductID='$id'");
+      pg_query($conn, "delete from public.orderdetail where productid='$id'");
+      pg_query($conn, "delete from public.product where productid='$id'");
       echo '<meta http-equiv="refresh" content="0;URL=admin.php?page=product"/>';
     }
   }

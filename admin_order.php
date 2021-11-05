@@ -46,8 +46,8 @@
   if (isset($_GET["function"]) == 'del') {
     if (isset($_GET["id"])) {
       $orderid = $_GET["id"];
-      pg_query($conn, "delete from public.orderdetail where OrderID='$orderid'") or die(pg_result_error($conn));
-      pg_query($conn, "delete from public.order where OrderID='$orderid'") or die(pg_result_error($conn));
+      pg_query($conn, "delete from public.orderdetail where orderid='$orderid'") or die(pg_result_error($conn));
+      pg_query($conn, "delete from public.order where orderid='$orderid'") or die(pg_result_error($conn));
       echo '<meta http-equiv="refresh" content="0;URL=admin.php?page=order"/>';
     }
   }

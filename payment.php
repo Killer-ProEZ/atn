@@ -20,6 +20,9 @@
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
 </head>
+<?php
+session_start();
+?>
 
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
@@ -28,12 +31,13 @@
     <?php
     if (isset($_POST["btn_payment"])) {
         include_once("connection.php");
+        $total = $_SESSION['total'];
         $username = $_SESSION['us'];
         $sq = "select customerid from public.customer where username='$username'";
         $res = pg_query($conn, $sq) or die(pg_result_error($conn));
         $row = pg_fetch_array($res, NULL, PGSQL_ASSOC);
         $cusid = $row["customerid"];
-        $query = "INSERT INTO public.order(customerid) VALUES ('$cusid')";
+        $query = "INSERT INTO public.order(customerid, totalprice) VALUES ('$cusid','$total')";
         $res = pg_query($conn, $query) or die(pg_result_error($conn));
         $res1 = pg_query($conn, "select orderid from public.orderdetail order by orderid desc fetch first 1 rows only ") or die(pg_result_error($conn));
         $row1 = pg_fetch_array($res1, NULL, PGSQL_ASSOC);
@@ -45,12 +49,12 @@
             $res1 = pg_query($conn, $query1) or die(pg_result_error($conn));
         }
         unset($_SESSION["cart"]);
+        unset($_SESSION["total"]);
         echo "<script type='text/javascript'>alert('Payment success');</script>";
         echo "<script> location.href='index.php'; </script>";
         exit;
     }
     ?>
-
     <main id="main">
         <!-- ======= Breadcrumbs ======= -->
         <section class="breadcrumbs">
@@ -85,6 +89,12 @@
                             <label class="form-check-label" for="flexCheckChecked">
                                 Payment on delivery
                             </label>
+                        </div>
+                        <div class="form-group mt-3">
+                            <label class="form-check-label" for="flexCheckChecked">
+                                Order Date
+                            </label>
+                            <input type="text" class="form-control" name="email" id="email" value="<?php $total . '$' ?>" required>
                         </div>
                         <div class="my-3">
                         </div>

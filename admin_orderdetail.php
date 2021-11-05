@@ -47,7 +47,7 @@
     if (isset($_GET["orderid"])) {
       $orderid = $_GET["orderid"];
       $productid = $_GET["productid"];
-      pg_query($conn, "delete from public.orderdetail where OrderID='$orderid'and ProductID='$productid'") or die(pg_result_error($conn));
+      pg_query($conn, "delete from public.orderdetail where orderid='$orderid'and productid='$productid'") or die(pg_result_error($conn));
       echo '<meta http-equiv="refresh" content="0;URL=admin.php?page=orderdetail"/>';
     }
   }
@@ -73,6 +73,7 @@
             <th>OrderID</th>
             <th>ProductID</th>
             <th>Quality</th>
+            <th>TotalPrice</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
@@ -87,6 +88,7 @@
               <td><?php echo $row["orderid"]; ?></td>
               <td><?php echo $row["productid"]; ?></td>
               <td><?php echo $row["quality"]; ?></td>
+              <td><?php echo $row["totalprice"]; ?></td>
               <td><a href="?page=update_orderdetail&&orderid=<?php echo $row["orderid"]; ?>&&productid=<?php echo $row["productid"]; ?>"><i class="fas fa-pencil-alt"></i></a></td>
               <td><a href="admin_orderdetail.php?function=del&&orderid=<?php echo $row["orderid"]; ?>&&productid=<?php echo $row["productid"]; ?>" onclick="return deleteConfirm()"><i class="fas fa-trash-alt"></i></a></i></td>
             </tr>

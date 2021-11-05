@@ -29,7 +29,7 @@
         if (isset($_GET["id"])) {
             $id = $_GET["id"];
             pg_query($conn, "delete from public.product where storeid='$id'");
-            pg_query($conn, "delete from public.brand where storeid='$id'");
+            pg_query($conn, "delete from public.store where storeid='$id'");
             echo '<meta http-equiv="refresh" content="0;URL=admin.php?page=store"/>';
         }
     }

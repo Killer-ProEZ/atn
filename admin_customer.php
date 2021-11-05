@@ -28,9 +28,9 @@
   if (isset($_GET["function"]) == 'del') {
     if (isset($_GET["id"])) {
       $id = $_GET["id"];
-      pg_query($conn, "delete from public.feedback where CustomerID='$id'");
-      pg_query($conn, "delete from public.order where CustomerID='$id'");
-      pg_query($conn, "delete from public.customer where CustomerID='$id'");
+      pg_query($conn, "delete from public.feedback where customerid='$id'");
+      pg_query($conn, "delete from public.order where customerid='$id'");
+      pg_query($conn, "delete from public.customer where customerid='$id'");
       echo '<meta http-equiv="refresh" content="0;URL=admin.php?page=customer"/>';
     }
   }

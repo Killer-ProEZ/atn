@@ -28,8 +28,8 @@
   if (isset($_GET["function"]) == 'del') {
     if (isset($_GET["id"])) {
       $id = $_GET["id"];
-      pg_query($conn, "delete from public.product where BrandID='$id'");
-      pg_query($conn, "delete from public.brand where BrandID='$id'");
+      pg_query($conn, "delete from public.product where brandid='$id'");
+      pg_query($conn, "delete from public.brand where brandid='$id'");
       echo '<meta http-equiv="refresh" content="0;URL=admin.php?page=brand"/>';
     }
   }

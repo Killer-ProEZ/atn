@@ -118,6 +118,7 @@ $cart=(isset($_SESSION['cart']))?$_SESSION['cart']:[];
                       <?php 
                       if(isset($_POST['btn_buy'])){
                         if(isset($_SESSION["us"])&&$_SESSION["us"]!=""){
+                            $_SESSION["total"]=$total;
                             echo "<script> location.href='index.php?page=payment'; </script>";
                             exit;
                         }
