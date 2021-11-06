@@ -23,7 +23,6 @@
 <?php
 session_start();
 ?>
-
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <!-- ======= Header ======= -->
@@ -37,7 +36,7 @@ session_start();
         $res = pg_query($conn, $sq) or die(pg_result_error($conn));
         $row = pg_fetch_array($res, NULL, PGSQL_ASSOC);
         $cusid = $row["customerid"];
-        $query = "INSERT INTO public.order(customerid, totalprice) VALUES ('$cusid','$total')";
+        $query = "INSERT INTO public.order(customerid, totalprice) VALUES ('$cusid','$_SESSION['total']')";
         $res = pg_query($conn, $query) or die(pg_result_error($conn));
         $res1 = pg_query($conn, "select orderid from public.orderdetail order by orderid desc fetch first 1 rows only ") or die(pg_result_error($conn));
         $row1 = pg_fetch_array($res1, NULL, PGSQL_ASSOC);
@@ -84,17 +83,17 @@ session_start();
                             </label>
                             <input type="text" class="form-control" name="email" id="email" readonly value="<?php echo date("Y/m/d"); ?>" required>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="checkbox" checked>
-                            <label class="form-check-label" for="flexCheckChecked">
-                                Payment on delivery
-                            </label>
-                        </div>
                         <div class="form-group mt-3">
                             <label class="form-check-label" for="flexCheckChecked">
                                 TotalPrice
                             </label>
                             <input type="text" class="form-control" name="email" id="email" readonly value="<?php echo $_SESSION['total']." $"?>" required>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="checkbox" checked>
+                            <label class="form-check-label" for="flexCheckChecked">
+                                Payment on delivery
+                            </label>
                         </div>
                         <div class="my-3">
                         </div>
