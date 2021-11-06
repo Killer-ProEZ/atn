@@ -5,11 +5,11 @@ session_start();
     <?php
     $No = 1;
     $startday = $_SESSION['startday'];
-    $endday = $_SESSION['startday'];
+    $endday = $_SESSION['endday'];
     $result = pg_query($conn, "Select * from public.store");
     while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
         $proid = $row["storeid"];
-        $sq = "Select Sum(price) FROM public.orderdetail WHERE orderid in (Select orderid from public.order WHERE orderdate BETWEEN '$startday' AND '$endday' ) and productid in (select productid from public.product WHERE storeid='$proid')";
+        $sq = "Select Sum(price) FROM public.orderdetail WHERE orderid in (Select orderid from public.order WHERE orderdate BETWEEN '2021-11-06' AND '2021-11-06' ) and productid in (select productid from public.product WHERE storeid='$proid')";
         $res = pg_query($conn, $sq);
         $row1 = pg_fetch_array($res, NULL, PGSQL_ASSOC)
     ?>
@@ -22,4 +22,8 @@ session_start();
         </tr>
     <?php $No++;
     } ?>
+    <?php
+    unset($_SESSION['startday']);
+    unset($_SESSION['endday']);
+    ?>
 </tbody>
