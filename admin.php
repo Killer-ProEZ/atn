@@ -37,26 +37,6 @@
       }
     }
   </style>
-  <script>
-    function deleteConfirm() {
-      if (confirm("Are you sure to delete!")) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-  </script>
-
-  <?php
-  include_once("connection.php");
-  if (isset($_GET["function"]) == 'del') {
-    if (isset($_GET["id"])) {
-      $orderid = $_GET["id"];
-      pg_query($conn, "delete from orderdetail where OrderID='$orderid'") or die(pg_result_error($conn));
-      pg_query($conn, "delete from `order` where OrderID='$orderid'") or die(pg_result_error($conn));
-    }
-  }
-  ?>
   <!-- Custom styles for this template -->
   <link href="admin.css" rel="stylesheet">
 </head>
@@ -70,7 +50,7 @@
     </button>
     <ul class="navbar-nav px-3 logout">
       <li class="nav-item text-nowrap">
-        <a class="nav-link" href="admin_login.html"><i class="fas fa-sign-out-alt"></i>Sign Out</a>
+        <a class="nav-link" href="login.php"><i class="fas fa-sign-out-alt"></i>Sign Out</a>
       </li>
     </ul>
   </header>

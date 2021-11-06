@@ -92,9 +92,9 @@ session_start();
                         </div>
                         <div class="form-group mt-3">
                             <label class="form-check-label" for="flexCheckChecked">
-                                Order Date
+                                TotalPrice
                             </label>
-                            <input type="text" class="form-control" name="email" id="email" value="<?php $total . '$' ?>" required>
+                            <input type="text" class="form-control" name="email" id="email" value="<?php echo $total . '$' ?>" required>
                         </div>
                         <div class="my-3">
                         </div>

@@ -73,6 +73,7 @@
             <th>ID</th>
             <th>CustomerID</th>
             <th>OrderDate</th>
+            <th>TotalPrice</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
@@ -87,6 +88,7 @@
               <td><?php echo $row["orderid"]; ?></td>
               <td><?php echo $row["customerid"]; ?></td>
               <td><?php echo $row["orderdate"]; ?></td>
+              <td><?php echo $row["totalprice"]; ?></td>
               <td><a href="?page=update_order&&id=<?php echo $row["orderid"]; ?>"><i class="fas fa-pencil-alt"></i></a></td>
               <td><a href="admin_order.php?function=del&&id=<?php echo $row["orderid"]; ?>" onclick="deleteConfirm()"><i class="fas fa-trash-alt"></i></a></i></td>
             </tr>
