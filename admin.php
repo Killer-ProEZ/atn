@@ -102,6 +102,12 @@
                 Store
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="?page=report">
+                <i class="fas fa-chart-line"></i>
+                Report
+              </a>
+            </li>
           </ul>
         </div>
       </nav>
@@ -164,6 +170,9 @@
         }
         if ($page == 'update_orderdetail') {
           include_once("update_orderdetail.php");
+        }
+        if ($page == 'report') {
+          include_once("report.php");
         }
       } else {
         include("admin_product.php");
