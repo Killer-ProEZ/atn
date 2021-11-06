@@ -23,6 +23,7 @@
 <?php
 session_start();
 ?>
+
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <!-- ======= Header ======= -->
@@ -30,7 +31,7 @@ session_start();
     <?php
     if (isset($_POST["btn_payment"])) {
         include_once("connection.php");
-        $total = $_SESSION['total'];
+        $total = $_SESSION["total"];
         $username = $_SESSION['us'];
         $sq = "select customerid from public.customer where username='$username'";
         $res = pg_query($conn, $sq) or die(pg_result_error($conn));
@@ -42,10 +43,11 @@ session_start();
         $row1 = pg_fetch_array($res1, NULL, PGSQL_ASSOC);
         $orderid = $row1["orderid"];
         foreach ($_SESSION["cart"] as $key => $row) {
-            $query1 = "INSERT INTO public.orderdetail(orderid,productid,quality) VALUES (" . $orderid . ",'" . $key . "'," . $row['quanlity'] . ")";
+            $query1 = "INSERT INTO public.orderdetail(orderid,productid,quality,price) VALUES (" . $orderid . ",'" . $key . "'," . $row['quanlity'] . "," . $row['price'] * $row['quanlity'] . ")";
             $res1 = pg_query($conn, $query1) or die(pg_result_error($conn));
-            $query1 = "UPDATE public.product SET stock=stock-" . $row['quanlity'] . " WHERE productid='" . $key . "'";
-            $res1 = pg_query($conn, $query1) or die(pg_result_error($conn));
+            $query2 = "UPDATE public.product SET stock=stock-" . $row['quanlity'] . " WHERE productid='" . $key . "'";
+            $res2 = pg_query($conn, $query2) or die(pg_result_error($conn));
+            $query3 = pg_query("UPDATE public.store SET revenue =" . $row['price'] * $row['quanlity'] . "  WHERE productid='" . $key . "'");
         }
         unset($_SESSION["cart"]);
         unset($_SESSION["total"]);
@@ -87,7 +89,7 @@ session_start();
                             <label class="form-check-label" for="flexCheckChecked">
                                 TotalPrice
                             </label>
-                            <input type="text" class="form-control" name="email" id="email" readonly value="<?php echo $_SESSION['total']." $"?>" required>
+                            <input type="text" class="form-control" name="email" id="email" readonly value="<?php echo $_SESSION['total'] . " $" ?>" required>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="checkbox" checked>
