@@ -23,17 +23,6 @@
             }
         }
     </script>
-    <?php
-    include_once("connection.php");
-    if (isset($_GET["function"]) == 'del') {
-        if (isset($_GET["id"])) {
-            $id = $_GET["id"];
-            pg_query($conn, "delete from public.product where storeid='$id'");
-            pg_query($conn, "delete from public.store where storeid='$id'");
-            echo '<meta http-equiv="refresh" content="0;URL=admin.php?page=store"/>';
-        }
-    }
-    ?>
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -53,16 +42,19 @@
     <link href="admin.css" rel="stylesheet">
 </head>
 <?php
+session_start();
+?>
+<?php
 if (isset($_POST["btn_summit"])) {
-    $startday = $_POST["startday"];
-    $endday = $_POST["endday"];
-    echo $startday;
-    echo $endday;
+    $_SESSION['startday'] = date('Y-m-d', strtotime($_POST["startday"]));
+    $_SESSION['endday'] = date('Y-m-d', strtotime($_POST["endday"]));
     if (trim($startday) == "") {
         echo "<script type='text/javascript'>alert('StartDay can not be empty');</script>";
     } else if (trim($endday) == "") {
         echo "<script type='text/javascript'>alert('EndDay can not be empty');</script>";
     }
+    echo "<script> location.href='?page=result' </script>";
+    exit;
 }
 ?>
 
@@ -100,26 +92,14 @@ if (isset($_POST["btn_summit"])) {
                         <th>Revenue</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <?php
-                    $No = 1;
-                    $result = pg_query($conn, "Select * from public.store");
-                    while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
-                        $proid = $row["storeid"];
-                        $sq = "Select Sum(price) FROM public.orderdetail WHERE orderid in (Select orderid from public.order WHERE orderdate BETWEEN '$startday' AND '$endday' ) and productid in (select productid from public.product WHERE storeid='$proid')";
-                        $res = pg_query($conn, $sq);
-                        $row1 = pg_fetch_array($res, NULL, PGSQL_ASSOC)
-                    ?>
-                        <tr>
-                            <td><?php echo $No; ?></td>
-                            <td><?php echo $row["storeid"]; ?></td>
-                            <td><?php echo $row["storename"]; ?></td>
-                            <td><?php echo $row["address"]; ?></td>
-                            <td><?php echo $row1["sum"]; ?></td>
-                        </tr>
-                    <?php $No++;
-                    } ?>
-                </tbody>
+                <?php
+                if (isset($_GET['page'])) {
+                    $page = $_GET['page'];
+                    if ($page == 'result') {
+                        include_once("resultreport.php");
+                    }
+                }
+                ?>
             </table>
         </div>
     </main>
