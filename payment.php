@@ -94,7 +94,7 @@ session_start();
                             <label class="form-check-label" for="flexCheckChecked">
                                 TotalPrice
                             </label>
-                            <input type="text" class="form-control" name="email" id="email" value="<?php echo $total . '$' ?>" required>
+                            <input type="text" class="form-control" name="email" id="email" value="<?php echo $total." $"?>" required>
                         </div>
                         <div class="my-3">
                         </div>
