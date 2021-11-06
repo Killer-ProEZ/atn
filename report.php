@@ -57,9 +57,9 @@ if (isset($_POST["btn_summit"])) {
     $startday = $_POST["startday"];
     $endday = $_POST["endday"];
     if (trim($startday) == "") {
-        echo "<script type='text/javascript'>alert('StartDay can not be empty');</script>";
+        echo "$startday <script type='text/javascript'>alert('StartDay can not be empty');</script>";
     } else if (trim($endday) == "") {
-        echo "<script type='text/javascript'>alert('EndDay can not be empty');</script>";
+        echo "$endday<script type='text/javascript'>alert('EndDay can not be empty');</script>";
     }
 }
 ?>
