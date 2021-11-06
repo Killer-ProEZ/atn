@@ -39,7 +39,7 @@ session_start();
         $cusid = $row["customerid"];
         $query = "INSERT INTO public.order(customerid, totalprice) VALUES ('$cusid','$total')";
         $res = pg_query($conn, $query) or die(pg_result_error($conn));
-        $res1 = pg_query($conn, "select orderid from public.orderdetail order by orderid desc fetch first 1 rows only ") or die(pg_result_error($conn));
+        $res1 = pg_query($conn, "select orderid from public.order order by orderid desc fetch first 1 rows only ") or die(pg_result_error($conn));
         $row1 = pg_fetch_array($res1, NULL, PGSQL_ASSOC);
         $orderid = $row1["orderid"];
         foreach ($_SESSION["cart"] as $key => $row) {
@@ -47,7 +47,8 @@ session_start();
             $res1 = pg_query($conn, $query1) or die(pg_result_error($conn));
             $query2 = "UPDATE public.product SET stock=stock-" . $row['quanlity'] . " WHERE productid='" . $key . "'";
             $res2 = pg_query($conn, $query2) or die(pg_result_error($conn));
-            $query3 = pg_query("UPDATE public.store SET revenue =" . $row['price'] * $row['quanlity'] . "  WHERE productid='" . $key . "'");
+            $query3 = "UPDATE public.store SET revenue =" . $row['price'] * $row['quanlity'] . "  WHERE storeid=(Select storeid from public.product WHERE productid='" . $key . "' )";
+            $res3 = pg_query($conn, $query3) or die(pg_result_error($conn));
         }
         unset($_SESSION["cart"]);
         unset($_SESSION["total"]);
