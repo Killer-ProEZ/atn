@@ -101,6 +101,7 @@ $cart=(isset($_SESSION['cart']))?$_SESSION['cart']:[];
                         <tbody>
                         <?php
                         $total=0;
+                        $_SESSION["total"] = "0";
                          foreach($cart as $key=> $value):
                         ?>
                           <tr>
@@ -118,7 +119,7 @@ $cart=(isset($_SESSION['cart']))?$_SESSION['cart']:[];
                       <?php 
                       if(isset($_POST['btn_buy'])){
                         if(isset($_SESSION["us"])&&$_SESSION["us"]!=""){
-                            $_SESSION["total"]=$total;
+                            $_SESSION["total"]="$total";
                             echo "<script> location.href='index.php?page=payment'; </script>";
                             exit;
                         }
