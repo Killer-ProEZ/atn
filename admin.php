@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Hugo 0.82.0">
-  <title>Orders Management</title>
+  <title>Admin</title>
   <!-- WebIcon -->
   <link rel="icon" href="assets/img/Logo_T&M.png">
   <script src="https://kit.fontawesome.com/a2c5b72efa.js" crossorigin="anonymous"></script>
@@ -44,7 +44,7 @@
 <body>
 
   <header class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow nav-color">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">T&M Store</a>
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">ATN Shop</a>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

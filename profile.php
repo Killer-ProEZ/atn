@@ -103,13 +103,13 @@ session_start();
                     echo "<script type='text/javascript'>alert('phone can not be empty');</script>";
                 } else {
                     include_once("connection.php");
-                    $sq = "select * from customer where CustomerID!='$cusid' and Email='$email'";
+                    $sq = "select * from customer where customerid!='$cusid' and email='$email'";
                     $res = pg_query($conn, $sq);
                     $pass1 = md5($pass1);
                     if (pg_num_rows($res) == 0) {
-                        pg_query($conn, "UPDATE `customer` SET 
-            `UserName`='$us',
-            `CustomerName`='$fname',`Tel`='$tel',`Email`='$email',`Address`='$address'WHERE CustomerID='$cusid'")
+                        pg_query($conn, "UPDATE public.customer SET 
+            username='$us',
+            customername='$fname',tel='$tel',email='$email',address='$address'WHERE customerid='$cusid'")
                             or die(pg_result_error($conn));
                         echo "<script type='text/javascript'>alert('Update Profile Successful');</script>";
                         echo "<script> location.href='index.php'; </script>";
@@ -141,13 +141,13 @@ session_start();
                     echo "<script type='text/javascript'>alert('phone can not be empty');</script>";
                 } else {
                     include_once("connection.php");
-                    $sq = "select * from customer where CustomerID!='$cusid' and Email='$email'";
+                    $sq = "select * from customer where customer!='$cusid' and email='$email'";
                     $res = pg_query($conn, $sq);
                     $pass1 = md5($pass1);
                     if (pg_num_rows($res) == 0) {
                         pg_query($conn, "UPDATE `customer` SET 
-            `UserName`='$us',`Password`='$pass1',
-            `CustomerName`='$fname',`Tel`='$tel',`Email`='$email',`Address`='$address'WHERE CustomerID='$cusid'")
+            `username`='$us',`password`='$pass1',
+            `customername`='$fname',`Tel`='$tel',`email`='$email',`address`='$address'WHERE customerid='$cusid'")
                             or die(pg_result_error($conn));
                         echo "<script type='text/javascript'>alert('Update Profile Successful');</script>";
                         echo "<script> location.href='index.php'; </script>";
