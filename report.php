@@ -103,8 +103,6 @@ if (isset($_POST["btn_summit"])) {
                         <td><?php echo $row["storename"]; ?></td>
                         <td><?php echo $row["address"]; ?></td>
                         <td><?php echo $row["revenue"]; ?></td>
-                        <td><a href="?page=update_store&&id=<?php echo $row["storeid"]; ?>"><i class="fas fa-pencil-alt"></i></a></td>
-                        <td><a href="admin_store.php?function=del&&id=<?php echo $row["storeid"]; ?>" onclick="deleteConfirm()"><i class="fas fa-trash-alt"></i></a></i></td>
                     </tr>
                 <?php $No++;
                 } ?>
