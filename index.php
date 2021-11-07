@@ -6,7 +6,7 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-  <title>T&M Shop</title>
+  <title>ATN Shop</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -35,7 +35,7 @@ session_start();
     <div class="container">
       <div class="header-container d-flex align-items-center justify-content-between">
         <div class="logo">
-          <h1 class="text-light"><a href=""><span>T&M</span></a></h1>
+          <h1 class="text-light"><a href=""><span>ATN</span></a></h1>
         </div>
         <script>
           function check(){
@@ -147,15 +147,13 @@ session_start();
               Can Tho city <br></p>
           </div>
           <div class="col-lg-2 col-md-6">
-            <img src="assets/img/Logo_T&M.png" alt="">
+            <!-- <img src="assets/img/Logo_T&M.png" alt=""> -->
           </div>
         </div>
       </div>
     </div>
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></a>
-
-    <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
   </footer>
 </body>
