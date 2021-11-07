@@ -53,7 +53,7 @@ if (isset($_POST["btn_summit"])) {
     } else if (trim($endday) == "") {
         echo "<script type='text/javascript'>alert('EndDay can not be empty');</script>";
     }
-    echo "<script> location.href='?page=result' </script>";
+    echo "<script> location.href='report.php?page=result' </script>";
     exit;
 }
 ?>
