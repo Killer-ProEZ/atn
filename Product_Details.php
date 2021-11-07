@@ -60,7 +60,7 @@
       $desc = $row['description'];
       $result1 = pg_query($conn, "select*from public.brand where brandid='$brandid'") or die(pg_result_error($conn));
       $row1 = pg_fetch_array($result1, NULL, PGSQL_ASSOC);
-      $brandname = $row1['brandName'];
+      $brandname = $row1['brandname'];
     }
     ?>
 

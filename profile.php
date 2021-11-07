@@ -41,7 +41,6 @@ session_start();
                         <li><a class="nav-link scrollto" href="index.php#services">Services</a></li>
                         <li><a class="nav-link scrollto" href="index.php#contact">Contact</a></li>
                         <li><a class="nav-link scrollto active" href="feedback.php">Feedback</a></li>
-                        <li><a class="nav-link scrollto" href="admin_login.html" target="_blank">Admin</a></li>
                         <?php if (isset($_SESSION["us"]) && $_SESSION["us"] != "") { ?>
                             <li><a class="nav-link scrollto" href="profile.php"><?php echo "Hi " . $_SESSION["us"]; ?></a></li>
                             <li><a class="nav-link scrollto" href="logout.php">Logout</a></li>
@@ -165,7 +164,7 @@ session_start();
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4" data-aos="fade-right">
-                        <div class="section-title">
+                        <div class="section-title mt-3">
                             <h2>profile</h2>
                             <p></p>
                         </div>
@@ -215,7 +214,7 @@ session_start();
                     <div class="row">
 
                         <div class="col-lg-3 col-md-6 footer-contact">
-                            <h3>T&M</h3>
+                            <h3>ATN</h3>
                             <p>
                                 A108 Adam Street <br>
                                 New York, NY 535022<br>
