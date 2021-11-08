@@ -54,7 +54,7 @@ if (isset($_POST["btn_summit"])) {
     } else if (trim($endday) == "") {
         echo "<script type='text/javascript'>alert('EndDay can not be empty');</script>";
     }
-    // echo '<meta http-equiv="refresh" content="0;URL=?page=search&&txt=' . $search . '">';
+    echo '<meta http-equiv="refresh" content="0;URL=?page=report&&startday=' . $startday . '&&endday=' . $endday . '">';
 }
 ?>
 
@@ -94,11 +94,18 @@ if (isset($_POST["btn_summit"])) {
                 </thead>
                 <tbody>
                     <?php
+                    if (isset($_GET['startday'])) {
+                        $startday = $_GET['startday'];
+                        $endday = $_GET['endday'];
+                    } else {
+                        $startday = date("Y-m-d");
+                        $endday = date("Y-m-d");
+                    }
                     $No = 1;
                     $result = pg_query($conn, "Select * from public.store");
                     while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
                         $proid = $row["storeid"];
-                        $sq = "Select Sum(price) FROM public.orderdetail WHERE orderid in (Select orderid from public.order WHERE orderdate BETWEEN '2021-11-08' AND '2021-11-08' ) and productid in (select productid from public.product WHERE storeid='$proid')";
+                        $sq = "Select Sum(price) FROM public.orderdetail WHERE orderid in (Select orderid from public.order WHERE orderdate BETWEEN '$startday' AND '$enđay' ) and productid in (select productid from public.product WHERE storeid='$proid')";
                         $res = pg_query($conn, $sq);
                         $row1 = pg_fetch_array($res, NULL, PGSQL_ASSOC)
                     ?>
