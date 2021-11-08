@@ -110,7 +110,7 @@ session_start();
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>T&M</h3>
+            <h3>ATN</h3>
             <p>
               An Khanh ward, <br>
               Ninh Kieu district,<br>

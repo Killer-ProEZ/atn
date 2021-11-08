@@ -75,7 +75,7 @@
         } else {
             if ($pic['type'] == "image/jpg" || $pic['type'] == "image/jpeg" || $pic['type'] == "image/png" || $pic['type'] == "image/gif") {
                 if ($pic['size'] < 614400) {
-                    $sq = "select * from public.product where ProductID!='$proid' and ProductName='$proname'";
+                    $sq = "select * from public.product where productid!='$proid' and productname='$proname'";
                     $result = pg_query($conn, $sq);
                     if (pg_num_rows($result) == 0) {
                         copy($pic['tmp_name'], "product-imgs/" . $pic['name']);
