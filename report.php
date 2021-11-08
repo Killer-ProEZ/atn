@@ -53,7 +53,7 @@ if (isset($_POST["btn_summit"])) {
     } else if (trim($endday) == "") {
         echo "<script type='text/javascript'>alert('EndDay can not be empty');</script>";
     }
-    // echo "<script> location.href='report.php?page=result' </script>";
+    echo "<script> location.href='report.php?page=result' </script>";
     exit;
 }
 ?>
@@ -93,19 +93,13 @@ if (isset($_POST["btn_summit"])) {
                     </tr>
                 </thead>
                 <?php
-                $No = 1;
-                $result = pg_query($conn, "Select * from public.store");
-                while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
+                if (isset($_GET['page'])) {
+                    $page = $_GET['page'];
+                    if ($page == 'result') {
+                        include_once("resultreport.php");
+                    }
+                }
                 ?>
-                    <tr>
-                        <td><?php echo $No; ?></td>
-                        <td><?php echo $row["storeid"]; ?></td>
-                        <td><?php echo $row["storename"]; ?></td>
-                        <td><?php echo $row["address"]; ?></td>
-                        <td><?php echo $row["revenue"]; ?></td>
-                    </tr>
-                <?php $No++;
-                } ?>
             </table>
         </div>
     </main>
