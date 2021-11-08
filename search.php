@@ -1,5 +1,5 @@
  <!-- ======= Hero Section ======= -->
- <section id="hero" class="d-flex align-items-center" style="background-image: url('assets/img/Background.jpg');">
+ <section id="hero" class="d-flex align-items-center" style="background-image: url('product-imgs/background.jpg');">
    <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200">
      <h1>Incredible Prices on All Your Favorite Items</h1>
      <h2>Design is thinking made visual</h2>
@@ -11,28 +11,28 @@
    <!-- ======= Clients Section ======= -->
    <section id="clients" class="clients">
      <div class="container">
-       <div class="row">
+     <div class="row">
          <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="100">
-           <img src="assets/img/MacBook_Logo.png" class="img-fluid" alt="">
+           <img src="assets/img/barbie_logo.png" class="img-fluid" alt="">
          </div>
          <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="200">
-           <img src="assets/img/Lenovo-logo.png" class="img-fluid" alt="">
+           <img src="assets/img/hot-wheels-logo.png" class="img-fluid" alt="">
          </div>
 
          <div class="col-lg-2 col-md-4 col-6 " data-aos="zoom-in" data-aos-delay="300">
-           <img src="assets/img/HP_logo.png" class="img-fluid" alt="">
+           <img src="assets/img/Disney_Princess_Logo.png" class="img-fluid" alt="">
          </div>
 
          <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="400">
-           <img src="assets/img/Dell_logo.png" class="img-fluid" alt="">
+           <img src="assets/img/schleich.png" class="img-fluid" alt="">
          </div>
 
          <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="500">
-           <img src="assets/img/Asus_Logo.png" class="img-fluid" alt="">
+           <img src="assets/img/fore_logo.png" class="img-fluid" alt="">
          </div>
 
          <div class="col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="600">
-           <img src="assets/img/Acer_logo.png" class="img-fluid" alt="">
+           <img src="assets/img/Nerf_logo.png" class="img-fluid" alt="">
          </div>
        </div>
      </div>
@@ -83,6 +83,7 @@
          </form>
        </div>
        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+         <div class="container">
          <?php
           include_once('connection.php');
           if (isset($_GET['txt'])) {
@@ -110,6 +111,7 @@
            </div>
          <?php $No++;
           } ?>
+         </div>
        </div>
        </div>
      </section><!-- End Portfolio Section -->
