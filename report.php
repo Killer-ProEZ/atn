@@ -82,25 +82,14 @@ if (isset($_POST["btn_summit"])) {
             </div>
         </form>
         <div class="table-responsive mt-4">
-            <table class="table table-striped table-sm">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>StoreID</th>
-                        <th>StoreName</th>
-                        <th>Address</th>
-                        <th>Revenue</th>
-                    </tr>
-                </thead>
-                <?php
-                if (isset($_GET['page'])) {
-                    $page = $_GET['page'];
-                    if ($page == 'result') {
-                        include_once("resultreport.php");
-                    }
+            <?php
+            if (isset($_GET['page'])) {
+                $page = $_GET['page'];
+                if ($page == 'result') {
+                    include_once("resultreport.php");
                 }
-                ?>
-            </table>
+            }
+            ?>
         </div>
     </main>
     </div>
