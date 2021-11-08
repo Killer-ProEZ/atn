@@ -94,7 +94,7 @@ if (isset($_POST["btn_summit"])) {
                 </thead>
                 <tbody>
                     <?php
-                    if (isset($_GET['startday'])) {
+                    if (isset($_GET['report'])) {
                         $startday = $_GET['startday'];
                         $endday = $_GET['endday'];
                     } else {
