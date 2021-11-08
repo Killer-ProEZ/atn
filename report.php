@@ -54,8 +54,6 @@ if (isset($_POST["btn_summit"])) {
     } else if (trim($endday) == "") {
         echo "<script type='text/javascript'>alert('EndDay can not be empty');</script>";
     }
-    echo $startday;
-    echo $endday;
     echo '<meta http-equiv="refresh" content="0;URL=?page=report&&startday=' . $startday . '&&endday=' . $endday . '">';
 }
 ?>
