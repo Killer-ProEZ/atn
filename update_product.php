@@ -41,10 +41,10 @@
         echo "<select name='BrandList' class='form-control'>
 		<option value='0'>Choose category</option>";
         while ($row = pg_fetch_array($result, PGSQL_ASSOC)) {
-            if ($row['BrandID'] == $selectedValue) {
-                echo "<option value='" . $row['BrandID'] . "'selected>" . $row['BrandName'] . "</option>";
+            if ($row['brandid'] == $selectedValue) {
+                echo "<option value='" . $row['brandid'] . "'selected>" . $row['brandname'] . "</option>";
             } else {
-                echo "<option value='" . $row['BrandID'] . "'>" . $row['BrandName'] . "</option>";
+                echo "<option value='" . $row['brandid'] . "'>" . $row['brandname'] . "</option>";
             }
         }
         echo "</select>";
