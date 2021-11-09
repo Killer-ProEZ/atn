@@ -31,7 +31,6 @@ if (isset($_GET['btn_login'])) {
 	$us = $_GET['username'];
 	$us = htmlspecialchars(pg_escape_string($conn, $us));
 	$pa = $_GET['pass'];
-	include_once("connection.php");
 	$pass = md5($pa);
 	$res = pg_query($conn, "select * from public.customer where username='$us' and password='$pass'")
 		or die(pg_result_error($conn));
