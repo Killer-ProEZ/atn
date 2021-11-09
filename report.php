@@ -97,6 +97,8 @@ if (isset($_POST["btn-summit"])) {
                     if (isset($_GET['report'])) {
                         $startday = $_GET['startday'];
                         $endday = $_GET['endday'];
+                        echo $startday;
+                        echo $endday;
                     } else {
                         $startday = date("Y-m-d");
                         $endday = date("Y-m-d");
