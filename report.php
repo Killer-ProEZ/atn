@@ -46,7 +46,7 @@ session_start();
 include_once('connection.php');
 ?>
 <?php
-if (isset($_POST["btn_summit"])) {
+if (isset($_POST["btn-summit"])) {
     $startday = date('Y-m-d', strtotime($_POST["startday"]));
     $endday = date('Y-m-d', strtotime($_POST["endday"]));
     if (trim($startday) == "") {
