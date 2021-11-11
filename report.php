@@ -104,8 +104,8 @@ if (isset($_POST["btn-summit"])) {
                     $No = 1;
                     $result = pg_query($conn, "Select * from public.store");
                     while ($row = pg_fetch_array($result, NULL, PGSQL_ASSOC)) {
-                        $proid = $row["storeid"];
-                        $sq = "Select Sum(price) FROM public.orderdetail WHERE orderid in (Select orderid from public.order WHERE orderdate BETWEEN '$startday' AND '$endday' ) and productid in (select productid from public.product WHERE storeid='$proid')";
+                        $storeid = $row["storeid"];
+                        $sq = "Select Sum(price) FROM public.orderdetail WHERE orderid in (Select orderid from public.order WHERE orderdate BETWEEN '$startday' AND '$endday' ) and productid in (select productid from public.product WHERE storeid='$storeid')";
                         $res = pg_query($conn, $sq);
                         $row1 = pg_fetch_array($res, NULL, PGSQL_ASSOC)
                     ?>
