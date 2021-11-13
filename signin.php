@@ -39,7 +39,7 @@ if (isset($_POST["btn_signin"])) {
 	}
 	$pass = md5($pass1);
 	$sq = "select * from public.customer where username='$us' or email='$email'";
-	$res = pg_query($conn, $sq);
+	$res = pg_query($conn, $sq) or die(pg_result_error($conn));
 	if (pg_num_rows($res) == 0) {
 		pg_query($conn, "INSERT INTO public.customer (username, password, customername,tel,email,address,state) 
         VALUES ('$us','$pass','$fname',$phone,'$email','$address',0)")
